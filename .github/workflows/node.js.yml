@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm install
     Tests:
+      needs: Dependencies
       runs-on: ubuntu-latest
       strategy:
         matrix:
@@ -38,6 +39,7 @@ jobs:
       - name: Run the tests
         run: npm test
     Build:
+      needs: [Dependencies,Tests]
       runs-on: ubuntu-latest
       strategy:
         matrix:
