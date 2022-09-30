@@ -1,10 +1,22 @@
 import React from "react"
+import { useContext } from "react"
+import { UserLoginStatusContext } from "./context/userLoginStatus"
+import {Login} from './pages/Login';
+import {Routes, Route} from 'react-router-dom';
+import { Home } from "./pages/Home";
 
 export default function App() {
-  // faire un rendu conditionnel selon que le user est log in ou pas
+  const {isLogin} = useContext(UserLoginStatusContext);
+
+  if (!isLogin) {
+    return <Login/>
+  }
+
   return (
-    <main>
-      React ⚛️ + Vite ⚡ + Replit 🌀
-    </main>
+    <>
+      <Routes>
+        <Route path="/home" element={<Home/>} />
+      </Routes>
+    </>
   )
 }
