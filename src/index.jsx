@@ -9,10 +9,11 @@ import { Styles } from './themes'
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
 		<CustomThemeProvider>
-			<Styles/>
-			<UserLoginStatusProvider>
-				<App />
-			</UserLoginStatusProvider>
+			<Styles>
+				<UserLoginStatusProvider>
+					<App />
+				</UserLoginStatusProvider>
+			</Styles>
 		</CustomThemeProvider>
 	</BrowserRouter>
 	
