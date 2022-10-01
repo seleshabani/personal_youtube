@@ -1,8 +1,16 @@
 import React from "react"
 import { ButtonContainer, ConnectWithContainer, Container, FormContainer, FormWithInput, ImageContainer, InputContainer, LeftContainer, LeftContainerWrapper, LeftTitleContainer, LinkContainer, RightContainer, RightContainerWrapper} from "./styled"
 import login from '../../img/login.png'
+import { useContext } from "react"
+import { UserLoginStatusContext } from "../../context/userLoginStatus"
 export const Login = ()=>{
 
+    const {switchIsLogin} = useContext(UserLoginStatusContext);
+
+    const handleFormSubmit = (e)=>{
+        e.preventDefault();
+        switchIsLogin();
+    }
     return(
         <Container>
             <LeftContainer>
@@ -14,7 +22,7 @@ export const Login = ()=>{
                         </p>
                     </LeftTitleContainer>
                     <FormContainer>
-                        <FormWithInput>
+                        <FormWithInput onSubmit={handleFormSubmit}>
                             <InputContainer>
                                 <label htmlFor="email">Email</label>
                                 <input type="email"  name="email"/>
