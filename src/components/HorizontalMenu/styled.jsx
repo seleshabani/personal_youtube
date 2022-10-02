@@ -78,7 +78,7 @@ export const ProfileBtnContainer = styled.div`
         width: 100px;
         height: auto;
         position: relative;
-        background-color: white;
+        background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
         top: -10px;
         display: none;
         transition: 300ms;

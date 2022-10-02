@@ -3,8 +3,9 @@ import { ButtonContainer, ConnectWithContainer, Container, FormContainer, FormWi
 import login from '../../img/login.png'
 import { useContext } from "react"
 import { UserLoginStatusContext } from "../../context/userLoginStatus"
+import GoogleLogin from "react-google-login"
 export const Login = ()=>{
-
+    const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
     const {switchIsLogin} = useContext(UserLoginStatusContext);
 
     const handleFormSubmit = (e)=>{
@@ -39,7 +40,7 @@ export const Login = ()=>{
                             </ButtonContainer>
                         </FormWithInput>
                         <ConnectWithContainer>
-                            <button>Connectez vous avec Google</button>
+                            <GoogleLogin clientId={clientId} onFailure={()=>{}} onSuccess={(res)=>{console.log(res.profileObj)}}/>
                         </ConnectWithContainer>
                     </FormContainer>
                 </LeftContainerWrapper>

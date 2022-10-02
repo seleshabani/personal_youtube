@@ -7,7 +7,12 @@ export const Theme = createGlobalStyle`
         margin:0px;
     }
     body{
-        background-color: ${props=>props.theme.colors.text_white};
+        background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
+        transition: 300ms;
+        color: ${props=>props.isDark=='light'?props.theme.colors.text_black:props.theme.colors.text_white};
+    }
+    * a{
+        color:${props=>props.isDark=='light'?props.theme.colors.text_black:props.theme.colors.text_white};
     }
     * img{
         width: 100%;

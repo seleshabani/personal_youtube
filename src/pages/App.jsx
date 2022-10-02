@@ -6,6 +6,8 @@ import {Routes, Route} from 'react-router-dom';
 import { Home } from "./Home";
 import {Favoris} from "./Favoris"
 import { Template } from "./Template";
+import { useEffect } from "react";
+import { gapi } from "gapi-script";
 
 export default function App() {
   const {isLogin} = useContext(UserLoginStatusContext);

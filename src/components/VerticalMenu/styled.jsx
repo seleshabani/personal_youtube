@@ -43,7 +43,6 @@ export const MenuEl = styled.div`
     & a {
         font-family: 'Poppins';
         text-decoration: none;
-        color: ${props=>props.theme.colors.text_black};
         font-weight: 800;
     }
 `

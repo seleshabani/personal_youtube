@@ -1,10 +1,12 @@
 import React from "react";
 import { useContext } from "react";
+import { CustomThemeContext } from "../../context/customTheme";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
 import { BtnContainer, BtnsActionContainer, InputContainer, MenuBar, ProfileBtnContainer, SearchContainer, ThemeBtnContainer } from "./styled";
 
 export const HorizontalMenu = ()=>{
     const {switchIsLogin} = useContext(UserLoginStatusContext);
+    const {theme,themeSwitcher} = useContext(CustomThemeContext);
 
     return(
         <MenuBar>
@@ -19,10 +21,10 @@ export const HorizontalMenu = ()=>{
                 </form>
             </SearchContainer>
             <BtnsActionContainer>
-                <ThemeBtnContainer>
-                    <i className="fa fa-sun"></i>
+                <ThemeBtnContainer onClick={themeSwitcher}>
+                    {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
                 </ThemeBtnContainer>
-                <ProfileBtnContainer>
+                <ProfileBtnContainer isDark={theme}>
                     <div className="trigger"></div>
                     <div className="dropdowns">
                         <span onClick={switchIsLogin}>deconnexion</span>
