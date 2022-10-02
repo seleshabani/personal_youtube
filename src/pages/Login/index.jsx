@@ -12,6 +12,10 @@ export const Login = ()=>{
         e.preventDefault();
         switchIsLogin();
     }
+    const handleGoogleLogin = (success)=>{
+        localStorage.setItem("user",JSON.stringify({"nom":success.profileObj.givenName,"profil_picture":success.profileObj.imageUrl,"googleId":success.profileObj.googleId}))
+        switchIsLogin();
+    }
     return(
         <Container>
             <LeftContainer>
@@ -40,7 +44,7 @@ export const Login = ()=>{
                             </ButtonContainer>
                         </FormWithInput>
                         <ConnectWithContainer>
-                            <GoogleLogin clientId={clientId} onFailure={()=>{}} onSuccess={(res)=>{console.log(res.profileObj)}}/>
+                            <GoogleLogin clientId={clientId} onFailure={()=>{}} onSuccess={handleGoogleLogin}/>
                         </ConnectWithContainer>
                     </FormContainer>
                 </LeftContainerWrapper>

@@ -72,6 +72,12 @@ export const ProfileBtnContainer = styled.div`
         width: 40px;
         margin-bottom: 10px;
         cursor: pointer;
+        overflow: hidden;
+        & img{
+            width: 100%;
+            height: 100%;
+
+        }
     }
     & .dropdowns{
         flex-direction: column;

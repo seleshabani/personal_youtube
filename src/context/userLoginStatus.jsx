@@ -15,6 +15,7 @@ export const UserLoginStatusProvider = ({children})=>{
         }else{
             location.pathname = '/'
             localStorage.clear('isLogin');
+            localStorage.clear("user");
             setIsLogin(false);
         }
     }

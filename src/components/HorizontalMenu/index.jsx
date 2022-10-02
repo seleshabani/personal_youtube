@@ -7,7 +7,7 @@ import { BtnContainer, BtnsActionContainer, InputContainer, MenuBar, ProfileBtnC
 export const HorizontalMenu = ()=>{
     const {switchIsLogin} = useContext(UserLoginStatusContext);
     const {theme,themeSwitcher} = useContext(CustomThemeContext);
-
+    const user = JSON.parse(localStorage.getItem('user'));
     return(
         <MenuBar>
             <SearchContainer>
@@ -25,7 +25,9 @@ export const HorizontalMenu = ()=>{
                     {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
                 </ThemeBtnContainer>
                 <ProfileBtnContainer isDark={theme}>
-                    <div className="trigger"></div>
+                    <div className="trigger">
+                        <img src={user.profil_picture} alt="profil utilisateur" />
+                    </div>
                     <div className="dropdowns">
                         <span onClick={switchIsLogin}>deconnexion</span>
                         <span>pref</span>
