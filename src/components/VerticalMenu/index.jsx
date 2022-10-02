@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Logo } from "./styled";
+import { Container, Logo, MenuEl, MenuWrapper } from "./styled";
 
 export const VerticalMenu = ()=>{
     return(
@@ -8,6 +8,16 @@ export const VerticalMenu = ()=>{
             <Logo>
                 <Link to="/home">YouTube App</Link>
             </Logo>
+            <MenuWrapper>
+                <MenuEl>
+                    <i className="fa fa-home"></i>
+                    <Link to='/home'>Accueil</Link>
+                </MenuEl>
+                <MenuEl>
+                    <i className="fa fa-heart"></i>
+                    <Link to='/favoris'>Favoris</Link>
+                </MenuEl>
+            </MenuWrapper>
         </Container>
     )
 }
