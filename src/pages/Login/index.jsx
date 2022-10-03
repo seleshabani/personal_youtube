@@ -1,19 +1,41 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { ButtonContainer, ConnectWithContainer, Container, FormContainer, FormWithInput, ImageContainer, InputContainer, LeftContainer, LeftContainerWrapper, LeftTitleContainer, LinkContainer, RightContainer, RightContainerWrapper} from "./styled"
 import login from '../../img/login.png'
 import { useContext } from "react"
 import { UserLoginStatusContext } from "../../context/userLoginStatus"
-import GoogleLogin from "react-google-login"
+import { gapi, loadAuth2 } from 'gapi-script';
+
+
+
+/* import GoogleLogin from "react-google-login" */
 export const Login = ()=>{
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
     const {switchIsLogin} = useContext(UserLoginStatusContext);
 
+    useEffect(()=>{
+        const setAuth2 = async ()=>{
+            const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
+            if(auth2.isSignedIn.get()){
+                //action si user est connecté
+                //auth2.signOut();
+                console.log("déjà connecté")
+            }else{
+                attacheSignIn(document.getElementById('gapi_btn'),auth2)
+            }
+        }
+        setAuth2();
+    })
+    const attacheSignIn = (element,auth2) =>{
+        auth2.attachClickHandler(element,{},(user)=>{
+            console.log(user)
+            //redirection
+            localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
+            switchIsLogin();
+        },(error)=>console.log(error))
+    }
+
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-        switchIsLogin();
-    }
-    const handleGoogleLogin = (success)=>{
-        localStorage.setItem("user",JSON.stringify({"nom":success.profileObj.givenName,"profil_picture":success.profileObj.imageUrl,"googleId":success.profileObj.googleId}))
         switchIsLogin();
     }
     return(
@@ -44,7 +66,8 @@ export const Login = ()=>{
                             </ButtonContainer>
                         </FormWithInput>
                         <ConnectWithContainer>
-                            <GoogleLogin clientId={clientId} onFailure={()=>{}} onSuccess={handleGoogleLogin}/>
+                            <button id="gapi_btn">Login with google</button>
+                            {/* <GoogleLogin clientId={clientId} onFailure={()=>{}} onSuccess={handleGoogleLogin}/> */}
                         </ConnectWithContainer>
                     </FormContainer>
                 </LeftContainerWrapper>

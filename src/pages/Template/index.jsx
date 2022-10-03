@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, RightContainer } from "./styled";
+import { Container, ContentWrapper, RightContainer } from "./styled";
 import { HorizontalMenu } from "../../components/HorizontalMenu";
 import {VerticalMenu} from "../../components/VerticalMenu";
 
@@ -9,7 +9,9 @@ export const Template = ({children})=>{
             <VerticalMenu/>
             <RightContainer>
                 <HorizontalMenu/>
-                {children}
+                <ContentWrapper>
+                    {children}
+                </ContentWrapper>
             </RightContainer>
         </Container>
     )

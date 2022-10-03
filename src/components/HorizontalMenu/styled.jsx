@@ -73,6 +73,10 @@ export const ProfileBtnContainer = styled.div`
         margin-bottom: 10px;
         cursor: pointer;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
         & img{
             width: 100%;
             height: 100%;

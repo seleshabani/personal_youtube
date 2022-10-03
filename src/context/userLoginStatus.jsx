@@ -6,7 +6,6 @@ export const UserLoginStatusContext = createContext();
 export const UserLoginStatusProvider = ({children})=>{
     const [isLogin,setIsLogin] = useState(false);
     const location = useLocation()
-
     const switchIsLogin = ()=>{
         if (isLogin === false) {
             location.pathname = '/home'
@@ -17,6 +16,7 @@ export const UserLoginStatusProvider = ({children})=>{
             localStorage.clear('isLogin');
             localStorage.clear("user");
             setIsLogin(false);
+            window.location.reload();
         }
     }
     return(

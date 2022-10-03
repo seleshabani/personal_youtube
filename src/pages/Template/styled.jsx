@@ -7,5 +7,12 @@ export const Container = styled.div`
 
 export const RightContainer = styled.div`
     width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: auto;
+`
+
+export const ContentWrapper = styled.div`
+    width: 90%;
 `

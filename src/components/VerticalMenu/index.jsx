@@ -17,6 +17,10 @@ export const VerticalMenu = ()=>{
                     <i className="fa fa-heart"></i>
                     <Link to='/favoris'>Favoris</Link>
                 </MenuEl>
+                <MenuEl>
+                    <i className="fa fa-tv"></i>
+                    <Link to='/channels'>Mes Chaînes</Link>
+                </MenuEl>
             </MenuWrapper>
         </Container>
     )
