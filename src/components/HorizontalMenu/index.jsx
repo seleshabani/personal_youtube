@@ -43,7 +43,6 @@ export const HorizontalMenu = ()=>{
                     </div>
                     <div className="dropdowns">
                         <span onClick={logOut}>deconnexion</span>
-                        <span>pref</span>
                     </div>
                 </ProfileBtnContainer>
             </BtnsActionContainer>

@@ -94,7 +94,12 @@ export const ProfileBtnContainer = styled.div`
         transition: 300ms;
         box-shadow: 0px 2px 2px 0px;
         border-radius: 5px;
-        padding: 5px;
+        padding: 10px;
+        & span{
+            font-family: 'Poppins';
+            cursor: pointer;
+            font-size: 0.6rem;
+        }
     }
 
     & .trigger:hover + .dropdowns,.dropdowns:hover{
