@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { CardContainer, ChannelImgWrapper, ImgWrapper, TextWrapper, VideoInfoWrapper } from "./styled";
 
-export const VideoCard = ({thumbnail,channelThumb,title,channel})=>{
+export const VideoCard = ({thumbnail,channelThumb,title,channel,id})=>{
     return(
         <CardContainer>
             <ImgWrapper>
-                <img src={thumbnail} alt="" />
+                <Link to={`/video/${id}`}>
+                    <img src={thumbnail} alt="" />
+                </Link>
             </ImgWrapper>
             <TextWrapper>
                 <ChannelImgWrapper>

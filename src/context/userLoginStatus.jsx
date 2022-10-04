@@ -12,9 +12,9 @@ export const UserLoginStatusProvider = ({children})=>{
             localStorage.setItem('isLogin','true');
             setIsLogin(true);
         }else{
-            location.pathname = '/'
             localStorage.clear('isLogin');
             localStorage.clear("user");
+            location.pathname = '/'
             setIsLogin(false);
             window.location.reload();
         }

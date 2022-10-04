@@ -15,4 +15,5 @@ export const RightContainer = styled.div`
 
 export const ContentWrapper = styled.div`
     width: 90%;
+    height: max-content;
 `

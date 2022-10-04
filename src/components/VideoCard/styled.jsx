@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-    width: 20%;
+    width: 30%;
     display: flex;
     flex-direction: column;
 `
@@ -13,7 +13,7 @@ export const ImgWrapper = styled.div`
     cursor: pointer;
     & img,& * img{
         width: 100%;
-        height: auto;
+        height: 150px;
     }
 `
 export const TextWrapper = styled.div`
@@ -37,9 +37,10 @@ export const VideoInfoWrapper = styled.div`
     width: calc(100% - 70px);
     font-family: 'Poppins';
     & h2{
-        font-size: 2vw;
+        font-size: 0.8vw;
     }
     & h3 {
-        font-size: 1.7vw;
+        font-size: 0.7vw;
+        color: ${props=>props.theme.colors.red};
     }
 `

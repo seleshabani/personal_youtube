@@ -9,6 +9,7 @@ import { Template } from "./Template";
 import { useEffect } from "react";
 import { gapi } from "gapi-script";
 import { Channels } from "./Channels";
+import { Single } from "./Single";
 
 export default function App() {
   const {isLogin} = useContext(UserLoginStatusContext);
@@ -21,9 +22,11 @@ export default function App() {
   return (
       <Template>
         <Routes>
+        <Route path="/" element={<Home/>} />
           <Route path="/home" element={<Home/>} />
           <Route path="/favoris" element={<Favoris/>} />
           <Route path="/channels" element={<Channels/>} />
+          <Route path="/video/:id" element={<Single/>} />
         </Routes>
       </Template>
   )
