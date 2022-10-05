@@ -9,44 +9,6 @@ export const MenuBar = styled.div`
     border-bottom: solid 1px ${props=>props.theme.colors.grey};
     padding-top: 10px;
 `
-export const SearchContainer = styled.div`
-    width: 60%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    align-content: center;
-    margin-right: 10%;
-    & form{
-        width: 80%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        align-content: center;
-    }
-`
-export const InputContainer = styled.div`
-    width: 90%;
-    height: 30px;
-    & input{
-        width: 100%;
-        height: 100%;
-        padding: 5px;
-        border-bottom-left-radius: 5px;
-        border-top-left-radius: 5px;
-    }
-`
-export const BtnContainer = styled.div`
-    width: 10%;
-    & button{
-        background-color: ${props=>props.theme.colors.red};
-        color: white;
-        width: 100%;
-        height: 30px;
-        border-bottom-right-radius: 5px;
-        border-top-right-radius: 5px;
-        cursor: pointer;
-    }
-`
 export const BtnsActionContainer = styled.div`
     width: 30%;
     display: flex;

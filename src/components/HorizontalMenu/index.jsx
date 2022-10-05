@@ -2,8 +2,9 @@ import React from "react";
 import { useContext } from "react";
 import { CustomThemeContext } from "../../context/customTheme";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
-import { BtnContainer, BtnsActionContainer, InputContainer, MenuBar, ProfileBtnContainer, SearchContainer, ThemeBtnContainer } from "./styled";
+import {  BtnsActionContainer, MenuBar, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
 import { gapi,loadAuth2 } from "gapi-script";
+import { Search } from "../Search";
 export const HorizontalMenu = ()=>{
     const {switchIsLogin} = useContext(UserLoginStatusContext);
     const {theme,themeSwitcher} = useContext(CustomThemeContext);
@@ -23,16 +24,7 @@ export const HorizontalMenu = ()=>{
 
     return(
         <MenuBar>
-            <SearchContainer>
-                <form action="">
-                    <InputContainer>
-                        <input type="text" />
-                    </InputContainer>
-                    <BtnContainer>
-                        <button>ok</button>
-                    </BtnContainer>
-                </form>
-            </SearchContainer>
+            <Search/>
             <BtnsActionContainer>
                 <ThemeBtnContainer onClick={themeSwitcher}>
                     {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
