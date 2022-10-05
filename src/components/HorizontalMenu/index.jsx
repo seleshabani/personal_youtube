@@ -16,10 +16,10 @@ export const HorizontalMenu = ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             if(auth2.isSignedIn.get()){
                 auth2.signOut();
+                switchIsLogin();
             }
         }
         setAuth2();
-        switchIsLogin();
     }
 
     return(

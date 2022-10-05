@@ -6,6 +6,7 @@ export const UserLoginStatusContext = createContext();
 export const UserLoginStatusProvider = ({children})=>{
     const [isLogin,setIsLogin] = useState(false);
     const location = useLocation()
+
     const switchIsLogin = ()=>{
         if (isLogin === false) {
             location.pathname = '/home'
