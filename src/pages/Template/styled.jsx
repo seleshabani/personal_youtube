@@ -11,6 +11,7 @@ export const RightContainer = styled.div`
     flex-direction: column;
     align-items: center;
     height: auto;
+    margin-left: 25%;
 `
 
 export const ContentWrapper = styled.div`

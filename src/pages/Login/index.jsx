@@ -16,8 +16,6 @@ export const Login = ()=>{
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             if(auth2.isSignedIn.get()){
-                //action si user est connecté
-                //auth2.signOut();
                 console.log("déjà connecté")
             }else{
                 attacheSignIn(document.getElementById('gapi_btn'),auth2)

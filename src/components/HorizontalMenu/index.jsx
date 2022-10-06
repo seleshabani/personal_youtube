@@ -16,14 +16,15 @@ export const HorizontalMenu = ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             if(auth2.isSignedIn.get()){
                 auth2.signOut();
-                switchIsLogin();
             }
         }
-        setAuth2();
+        setAuth2().then(()=>{
+            switchIsLogin();
+        })
     }
 
     return(
-        <MenuBar>
+        <MenuBar isDark={theme}>
             <Search/>
             <BtnsActionContainer>
                 <ThemeBtnContainer onClick={themeSwitcher}>

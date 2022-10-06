@@ -8,6 +8,9 @@ export const MenuBar = styled.div`
     justify-content: space-evenly;
     border-bottom: solid 1px ${props=>props.theme.colors.grey};
     padding-top: 10px;
+    position: sticky;
+    top: 0px;
+    background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
 `
 export const BtnsActionContainer = styled.div`
     width: 30%;

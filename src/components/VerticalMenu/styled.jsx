@@ -3,12 +3,12 @@ import styled from 'styled-components'
 export const Container = styled.div`
     width: 25%;
     height: 100vh;
-    position: static;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-right: solid 1px ${props=>props.theme.colors.grey};
+    position: fixed;
 `
 export const Logo = styled.div`
     width: 100%;
