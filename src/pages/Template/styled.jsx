@@ -12,6 +12,10 @@ export const RightContainer = styled.div`
     align-items: center;
     height: auto;
     margin-left: 25%;
+    @media only screen and (max-width: 860px){
+        width: 80%;
+        margin-left: 20%;
+    }
 `
 
 export const ContentWrapper = styled.div`

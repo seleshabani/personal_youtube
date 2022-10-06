@@ -9,6 +9,9 @@ export const Container = styled.div`
     align-items: center;
     border-right: solid 1px ${props=>props.theme.colors.grey};
     position: fixed;
+    @media only screen and (max-width: 860px){
+        width: 20%;
+    }
 `
 export const Logo = styled.div`
     width: 100%;
@@ -44,5 +47,11 @@ export const MenuEl = styled.div`
         font-family: 'Poppins';
         text-decoration: none;
         font-weight: 800;
+    }
+    @media only screen and (max-width: 860px){
+        width: 20%;
+        & a {
+            font-size:1.5vw
+        }
     }
 `

@@ -4,6 +4,12 @@ export const CardContainer = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
+    @media only screen and (max-width: 860px){
+        width: 45%;
+    }
+    @media only screen and (max-width: 500px){
+        width: 100%;
+    }
 `
 
 export const ImgWrapper = styled.div`

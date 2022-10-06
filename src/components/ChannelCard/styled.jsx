@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
+    margin-bottom:10px;
 `
 
 export const ImgWrapper = styled.div`
@@ -15,4 +16,5 @@ export const ImgWrapper = styled.div`
         width: 100%;
         height: 150px;
     }
+    margin-bottom:10px;
 `

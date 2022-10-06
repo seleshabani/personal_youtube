@@ -12,7 +12,7 @@ export const VideosForChannel = ()=>{
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(()=>{
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
         .then(response=>response.json())
         .then(data=>{setVideos(data.items);setIsLoad(false)})
     },[])

@@ -9,7 +9,7 @@ export const Channels = ()=>{
     const [error,setError] = useState(false);
 
     useEffect(()=>{
-        fetch(`https://www.googleapis.com/youtube/v3/subscriptions?part=id,snippet,contentDetails&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&mine=true`,
+        fetch(`https://www.googleapis.com/youtube/v3/subscriptions?part=id,snippet,contentDetails&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&mine=true`,
         {method:'GET',headers:new Headers({'Authorization':`Bearer ${user.googleId}`})})
         .then((response)=>response.json())
         .then(data=>{{setChannels(data.items);setIsLoading(false);}})

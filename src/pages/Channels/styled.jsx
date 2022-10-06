@@ -8,5 +8,5 @@ export const ContainerWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     word-wrap: break-word;
-   
+   padding-top:10px;
 `
