@@ -9,7 +9,7 @@ export const ChannelCard = ({id,thumbnail,title})=>{
     return(
         <CardContainer>
             <ImgWrapper>
-                <Link to={`/video/${id}`}>
+                <Link to={`/channels/${id}`}>
                     <img src={thumbnail} alt="" />
                 </Link>
             </ImgWrapper>

@@ -17,7 +17,7 @@ export const Channels = ()=>{
     },[]);
     const ChannelsMap = ()=>{
         if(channels === undefined) return <h1>Erreur lors de la récupèration des données au serveur</h1>
-         return channels.map(channel=>(<ChannelCard key={channel.id} thumbnail={channel.snippet.thumbnails.medium.url} title={channel.snippet.title} id={channel.id}/>))
+         return channels.map(channel=>(<ChannelCard key={channel.id} thumbnail={channel.snippet.thumbnails.medium.url} title={channel.snippet.title} id={channel.snippet.resourceId.channelId}/>))
      }
     if(error) return <>Erreur lors du chargement</>
     return (
