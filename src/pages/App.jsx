@@ -11,6 +11,7 @@ import { gapi } from "gapi-script";
 import { Channels } from "./Channels";
 import { Single } from "./Single";
 import { VideosForChannel } from "./VideosForChannel";
+import { SearchResult } from "./SearchResult";
 
 export default function App() {
   const {isLogin} = useContext(UserLoginStatusContext);
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/channels" element={<Channels/>} />
           <Route path="/channels/:channelId" element={<VideosForChannel/>} />
           <Route path="/video/:id" element={<Single/>} />
+          <Route path="/search/:query" element={<SearchResult/>} />
         </Routes>
       </Template>
   )
