@@ -235,7 +235,7 @@ Error generating stack: `+nt.message+`
     justify-content: space-between;
     flex-wrap: wrap;
     word-wrap: break-word;
-`,Home=()=>{const[o,i]=react.exports.useState(!0),[s,et]=react.exports.useState([]),[tt,nt]=react.exports.useState(!1),rt=JSON.parse(localStorage.getItem("user"));react.exports.useEffect(()=>{fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&access_token="+rt.googleId).then(it=>it.json()).then(it=>{et(it.items),i(!1)}).catch(()=>nt(!0))},[]);const ot=()=>s===void 0?jsx("h1",{children:"Erreur lors de la r\xE9cup\xE8ration des donn\xE9es au serveur"}):s.map(it=>jsx(VideoCard,{thumbnail:it.snippet.thumbnails.medium.url,title:it.snippet.title,channel:it.snippet.channelTitle,id:it.id},it.id));return tt?jsx("h1",{children:"Erreur dans la requ\xEAte serveur"}):jsx(ContainerWrapper$2,{children:o?jsx("h1",{children:"Chargement en cours..."}):jsx(ot,{})})},Favoris=()=>jsx(Fragment,{children:jsx("h1",{children:"Favoris"})}),Container$1=styled.div`
+`,Home=()=>{const[o,i]=react.exports.useState(!0),[s,et]=react.exports.useState([]),[tt,nt]=react.exports.useState(!1),rt=JSON.parse(localStorage.getItem("user"));react.exports.useEffect(()=>{fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&maxResults=10&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&access_token="+rt.googleId).then(it=>it.json()).then(it=>{et(it.items),i(!1)}).catch(()=>nt(!0))},[]);const ot=()=>s===void 0?jsx("h1",{children:"Erreur lors de la r\xE9cup\xE8ration des donn\xE9es au serveur"}):s.map(it=>jsx(VideoCard,{thumbnail:it.snippet.thumbnails.medium.url,title:it.snippet.title,channel:it.snippet.channelTitle,id:it.id},it.id));return tt?jsx("h1",{children:"Erreur dans la requ\xEAte serveur"}):jsx(ContainerWrapper$2,{children:o?jsx("h1",{children:"Chargement en cours..."}):jsx(ot,{})})},Favoris=()=>jsx(Fragment,{children:jsx("h1",{children:"Favoris"})}),Container$1=styled.div`
     display: flex;
     flex-direction: row;
 `,RightContainer=styled.div`
@@ -244,6 +244,7 @@ Error generating stack: `+nt.message+`
     flex-direction: column;
     align-items: center;
     height: auto;
+    margin-left: 25%;
 `,ContentWrapper=styled.div`
     width: 90%;
     height: max-content;
@@ -255,6 +256,9 @@ Error generating stack: `+nt.message+`
     justify-content: space-evenly;
     border-bottom: solid 1px ${o=>o.theme.colors.grey};
     padding-top: 10px;
+    position: sticky;
+    top: 0px;
+    background-color: ${o=>o.isDark=="light"?o.theme.colors.text_white:o.theme.colors.text_black};
 `,BtnsActionContainer=styled.div`
     width: 30%;
     display: flex;
@@ -369,15 +373,15 @@ Error generating stack: `+nt.message+`
     & a:hover{
         background-color: #99878a;
     }
-`,Search=()=>{const[o,i]=react.exports.useState(!1),{theme:s}=react.exports.useContext(CustomThemeContext),et=react.exports.useRef(null),[tt,nt]=react.exports.useState([]),rt=JSON.parse(localStorage.getItem("user"));return jsxs(SearchContainer,{children:[jsxs("form",{action:"",children:[jsx(InputContainer,{children:jsx("input",{type:"text",ref:et,onChange:()=>{let lt=et.current.value;fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${lt}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{method:"GET",headers:new Headers({Authorization:"Bearer "+rt.googleId})}).then(ut=>ut.json()).then(ut=>nt(ut.items))},onClick:()=>{i(!o)}})}),jsx(BtnContainer,{children:jsx("button",{children:"ok"})})]}),jsx(ResultContainer,{visible:o,isDark:s,children:jsx(()=>tt===void 0?jsx("h1",{children:"Erreur"}):tt.map(lt=>jsx(Link,{onClick:()=>{i(!1)},to:`video/${lt.id.videoId}`,children:lt.snippet.title})),{})})]})},HorizontalMenu=()=>{const{switchIsLogin:o}=react.exports.useContext(UserLoginStatusContext),{theme:i,themeSwitcher:s}=react.exports.useContext(CustomThemeContext),et=JSON.parse(localStorage.getItem("user")),tt="86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com",nt=()=>{(async()=>{const ot=await loadAuth2(gapi,tt,"https://www.googleapis.com/auth/youtube");ot.isSignedIn.get()&&(ot.signOut(),o())})()};return jsxs(MenuBar,{children:[jsx(Search,{}),jsxs(BtnsActionContainer,{children:[jsx(ThemeBtnContainer,{onClick:s,children:i==="light"?jsx("i",{className:"fa fa-sun"}):jsx("i",{className:"fa fa-moon"})}),jsxs(ProfileBtnContainer,{isDark:i,children:[jsx("div",{className:"trigger",children:et?jsx("img",{src:et.profil_picture,alt:"profil utilisateur"}):jsx("i",{className:"fa fa-user"})}),jsx("div",{className:"dropdowns",children:jsx("span",{onClick:nt,children:"deconnexion"})})]})]})]})},Container=styled.div`
+`,Search=()=>{const[o,i]=react.exports.useState(!1),{theme:s}=react.exports.useContext(CustomThemeContext),et=react.exports.useRef(null),[tt,nt]=react.exports.useState([]),rt=JSON.parse(localStorage.getItem("user"));return jsxs(SearchContainer,{children:[jsxs("form",{action:"",children:[jsx(InputContainer,{children:jsx("input",{type:"text",ref:et,onChange:()=>{let lt=et.current.value;fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${lt}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{method:"GET",headers:new Headers({Authorization:"Bearer "+rt.googleId})}).then(ut=>ut.json()).then(ut=>nt(ut.items))},onClick:()=>{i(!o)}})}),jsx(BtnContainer,{children:jsx("button",{children:"ok"})})]}),jsx(ResultContainer,{visible:o,isDark:s,children:jsx(()=>tt===void 0?jsx("h1",{children:"Erreur"}):tt.map(lt=>jsx(Link,{onClick:()=>{i(!1)},to:`video/${lt.id.videoId}`,children:lt.snippet.title})),{})})]})},HorizontalMenu=()=>{const{switchIsLogin:o}=react.exports.useContext(UserLoginStatusContext),{theme:i,themeSwitcher:s}=react.exports.useContext(CustomThemeContext),et=JSON.parse(localStorage.getItem("user")),tt="86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com",nt=()=>{(async()=>{const ot=await loadAuth2(gapi,tt,"https://www.googleapis.com/auth/youtube");ot.isSignedIn.get()&&ot.signOut()})().then(()=>{o()})};return jsxs(MenuBar,{isDark:i,children:[jsx(Search,{}),jsxs(BtnsActionContainer,{children:[jsx(ThemeBtnContainer,{onClick:s,children:i==="light"?jsx("i",{className:"fa fa-sun"}):jsx("i",{className:"fa fa-moon"})}),jsxs(ProfileBtnContainer,{isDark:i,children:[jsx("div",{className:"trigger",children:et?jsx("img",{src:et.profil_picture,alt:"profil utilisateur"}):jsx("i",{className:"fa fa-user"})}),jsx("div",{className:"dropdowns",children:jsx("span",{onClick:nt,children:"deconnexion"})})]})]})]})},Container=styled.div`
     width: 25%;
     height: 100vh;
-    position: static;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-right: solid 1px ${o=>o.theme.colors.grey};
+    position: fixed;
 `,Logo=styled.div`
     width: 100%;
     height: 70px;
