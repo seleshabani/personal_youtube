@@ -93,6 +93,9 @@ Error generating stack: `+nt.message+`
     justify-content: center;
     align-items: center;
     align-content: center;
+    @media only screen and (max-width: 500px){      
+        width: 100%;
+    } 
 `,LeftContainerWrapper=styled.div`
     height: 500px;
     width: 80%;
@@ -164,7 +167,10 @@ Error generating stack: `+nt.message+`
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-color: ${o=>o.theme.colors.red};   
+    background-color: ${o=>o.theme.colors.red};
+    @media only screen and (max-width: 430px){      
+        display: none;
+    } 
 `,RightContainerWrapper=styled.div`
     width: 80%;
     display: flex;
