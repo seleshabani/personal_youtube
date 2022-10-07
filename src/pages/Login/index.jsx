@@ -4,13 +4,14 @@ import login from '../../img/login.png'
 import { useContext } from "react"
 import { UserLoginStatusContext } from "../../context/userLoginStatus"
 import { gapi, loadAuth2 } from 'gapi-script';
-
+import {useNavigate} from 'react-router-dom'
 
 
 /* import GoogleLogin from "react-google-login" */
 export const Login = ()=>{
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
     const {switchIsLogin} = useContext(UserLoginStatusContext);
+    const navigateTo = useNavigate();
 
     useEffect(()=>{
         const setAuth2 = async ()=>{
@@ -19,6 +20,7 @@ export const Login = ()=>{
                 let user = auth2.currentUser.le
                 localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
                 switchIsLogin();
+                navigateTo('/home');
                // console.log("déjà connecté")
             }else{
                 attacheSignIn(document.getElementById('gapi_btn'),auth2)
@@ -32,12 +34,13 @@ export const Login = ()=>{
             //redirection
             localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
             switchIsLogin();
+            navigateTo('/home');
         },(error)=>console.log(error))
     }
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
-        switchIsLogin();
+        //switchIsLogin();
     }
     return(
         <Container>

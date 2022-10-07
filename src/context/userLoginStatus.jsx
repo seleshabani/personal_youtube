@@ -11,11 +11,8 @@ export const UserLoginStatusProvider = ({children})=>{
         if (isLogin === false) {
             localStorage.setItem('isLogin','true');
             setIsLogin(true);
-            navigateTo('/')
         }else{
-            localStorage.clear('isLogin');
-            localStorage.clear("user");
-            navigateTo('/home')
+            localStorage.clear();
             setIsLogin(false);
         }
     }

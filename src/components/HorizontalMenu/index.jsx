@@ -2,12 +2,15 @@ import React from "react";
 import { useContext } from "react";
 import { CustomThemeContext } from "../../context/customTheme";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
+import {useNavigate} from 'react-router-dom'
 import {  BtnsActionContainer, MenuBar, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
 import { gapi,loadAuth2 } from "gapi-script";
 import { Search } from "../Search";
+
 export const HorizontalMenu = ()=>{
     const {switchIsLogin} = useContext(UserLoginStatusContext);
     const {theme,themeSwitcher} = useContext(CustomThemeContext);
+    const navigateTo = useNavigate()
     const user = JSON.parse(localStorage.getItem('user'));
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
 
@@ -20,6 +23,7 @@ export const HorizontalMenu = ()=>{
         }
         setAuth2().then(()=>{
             switchIsLogin();
+            navigateTo('/login');
         })
     }
 

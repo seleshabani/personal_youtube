@@ -19,7 +19,7 @@ export const VideosForChannel = ()=>{
 
     const VideosMap = ()=>{
         if (videos.length ===0) return <>Aucune données</>
-        return videos.map(video=><VideoCard key={video.id.videoID} title={video.snippet.title} 
+        return videos.map((video,index)=><VideoCard key={index} title={video.snippet.title} 
             thumbnail={video.snippet.thumbnails.medium.url} channelThumb="#"
             channel={video.snippet.channelTitle}/>)
     }
