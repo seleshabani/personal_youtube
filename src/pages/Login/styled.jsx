@@ -12,6 +12,9 @@ export const LeftContainer = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+    @media only screen and (max-width: 500px){      
+        width: 100%;
+    } 
 `
 export const LeftContainerWrapper = styled.div`
     height: 500px;
@@ -94,7 +97,10 @@ export const RightContainer = styled.div`
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-color: ${props => props.theme.colors.red};   
+    background-color: ${props => props.theme.colors.red};
+    @media only screen and (max-width: 430px){      
+        display: none;
+    } 
 `
 export const RightContainerWrapper = styled.div`
     width: 80%;
