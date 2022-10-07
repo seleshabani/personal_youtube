@@ -2,8 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { CustomThemeContext } from "../../context/customTheme";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
-import {useNavigate} from 'react-router-dom'
-import {  BtnsActionContainer, MenuBar, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
+import {Link, useNavigate} from 'react-router-dom'
+import {  BtnsActionContainer, MenuBar, MenuContainer, MobileMenu, MobileMenuItem, MobileMenuWrapper, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
 import { gapi,loadAuth2 } from "gapi-script";
 import { Search } from "../Search";
 
@@ -28,21 +28,42 @@ export const HorizontalMenu = ()=>{
     }
 
     return(
-        <MenuBar isDark={theme}>
-            <Search/>
-            <BtnsActionContainer>
-                <ThemeBtnContainer onClick={themeSwitcher}>
-                    {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
-                </ThemeBtnContainer>
-                <ProfileBtnContainer isDark={theme}>
-                    <div className="trigger">
-                    {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
-                    </div>
-                    <div className="dropdowns">
-                        <span onClick={logOut}>deconnexion</span>
-                    </div>
-                </ProfileBtnContainer>
-            </BtnsActionContainer>
-        </MenuBar>
+        <MenuContainer isDark={theme}>
+            <MobileMenu>
+                <MobileMenuWrapper>
+                    <MobileMenuItem>
+                        <Link to='/home'>
+                            <i className="fa fa-home"></i>
+                        </Link>
+                    </MobileMenuItem>
+                    <MobileMenuItem>
+                        <Link to='/favoris'>
+                            <i className="fa fa-heart"></i>
+                        </Link>
+                    </MobileMenuItem>
+                    <MobileMenuItem>
+                        <Link to='/channels'>
+                            <i className="fa fa-tv"></i>
+                        </Link>
+                    </MobileMenuItem>
+                </MobileMenuWrapper>
+            </MobileMenu>
+            <MenuBar isDark={theme}>
+                <Search/>
+                <BtnsActionContainer>
+                    <ThemeBtnContainer onClick={themeSwitcher}>
+                        {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
+                    </ThemeBtnContainer>
+                    <ProfileBtnContainer isDark={theme}>
+                        <div className="trigger">
+                        {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
+                        </div>
+                        <div className="dropdowns">
+                            <span onClick={logOut}>deconnexion</span>
+                        </div>
+                    </ProfileBtnContainer>
+                </BtnsActionContainer>
+            </MenuBar>
+        </MenuContainer>
     )
 }

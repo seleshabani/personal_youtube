@@ -5,6 +5,12 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom:10px;
+    @media only screen and (max-width: 860px){
+        width: 45%;
+    }
+    @media only screen and (max-width: 500px){
+        width: 100%;
+    }
 `
 
 export const ImgWrapper = styled.div`

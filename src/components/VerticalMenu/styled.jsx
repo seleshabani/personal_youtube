@@ -12,6 +12,9 @@ export const Container = styled.div`
     @media only screen and (max-width: 860px){
         width: 20%;
     }
+    @media only screen and (max-width: 430px){
+        display: none;
+    } 
 `
 export const Logo = styled.div`
     width: 100%;

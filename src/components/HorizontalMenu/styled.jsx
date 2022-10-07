@@ -1,16 +1,58 @@
 import styled from 'styled-components'
 
-export const MenuBar = styled.div`
-    height: 50px;
-    width: 100%;
+export const MenuContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-bottom: solid 1px ${props=>props.theme.colors.grey};
+    flex-direction: column;
+    width: 100%;
     padding-top: 10px;
     position: sticky;
     top: 0px;
+    transition: 300ms;
+    border-bottom: solid 1px ${props=>props.theme.colors.grey};
     background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
+`
+export const MobileMenu = styled.div`
+    display: none;
+    @media only screen and (max-width: 430px){      
+        height: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    } 
+`
+export const MobileMenuWrapper = styled.div`
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+`
+export const MobileMenuItem = styled.div`
+    width: 5%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    & a{
+        text-decoration: none;
+        width: 100%;
+    }
+`
+export const MenuBar = styled.div`
+    /* height: 50px; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: space-evenly;
+    /* border-bottom: solid 1px ${props=>props.theme.colors.grey};
+    padding-top: 10px;
+    position: sticky;
+    top: 0px; */
+/*  background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black}; */
 `
 export const BtnsActionContainer = styled.div`
     width: 30%;
