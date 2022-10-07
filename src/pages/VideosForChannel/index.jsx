@@ -12,14 +12,14 @@ export const VideosForChannel = ()=>{
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(()=>{
-        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
+        fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&type=video&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
         .then(response=>response.json())
         .then(data=>{setVideos(data.items);setIsLoad(false)})
     },[])
 
     const VideosMap = ()=>{
         if (videos.length ===0) return <>Aucune données</>
-        return videos.map((video,index)=><VideoCard key={index} title={video.snippet.title} 
+        return videos.map((video,index)=><VideoCard id={video.id.videoId} key={index} title={video.snippet.title} 
             thumbnail={video.snippet.thumbnails.medium.url} channelThumb="#"
             channel={video.snippet.channelTitle}/>)
     }
