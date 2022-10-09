@@ -16,7 +16,6 @@ export const VideosForChannel = ()=>{
         .then(response=>response.json())
         .then(data=>{setVideos(data.items);setIsLoad(false)})
     },[])
-
     const VideosMap = ()=>{
         if (videos.length ===0) return <>Aucune données</>
         return videos.map((video,index)=><VideoCard id={video.id.videoId} key={index} title={video.snippet.title} 

@@ -13,10 +13,10 @@ export const VerticalMenu = ()=>{
                     <i className="fa fa-home"></i>
                     <Link to='/home'>Accueil</Link>
                 </MenuEl>
-                <MenuEl>
+               {/*  <MenuEl>
                     <i className="fa fa-heart"></i>
                     <Link to='/favoris'>Favoris</Link>
-                </MenuEl>
+                </MenuEl> */}
                 <MenuEl>
                     <i className="fa fa-tv"></i>
                     <Link to='/channels'>Mes Chaînes</Link>

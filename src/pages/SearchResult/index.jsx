@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { VideoCard } from "../../components/VideoCard";
+import { SearchResultContainer, SearchResultContainerWrapper } from "./styled";
 export const SearchResult = ()=>{
     const {query} = useParams();
     const user = JSON.parse(localStorage.getItem('user'))
@@ -17,9 +18,19 @@ export const SearchResult = ()=>{
         .then(data=>setResults(data.items))
     },[])
 
+    const ResultsMap = ()=>{
+        if (results.length ===0) return <>Aucune données</>
+        return results.map((video,index)=><VideoCard id={video.id.videoId} key={index} title={video.snippet.title} 
+            thumbnail={video.snippet.thumbnails.medium.url} channelThumb="#"
+            channel={video.snippet.channelTitle}/>)
+    }
+
     return (
-        <>
-            <h1>Résultat</h1>
-        </>
+        <SearchResultContainer>
+            <h1>Résultat pour : {query}</h1>
+            <SearchResultContainerWrapper>
+                <ResultsMap/>
+            </SearchResultContainerWrapper>
+        </SearchResultContainer>
     )
 }

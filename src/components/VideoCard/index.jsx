@@ -11,9 +11,9 @@ export const VideoCard = ({thumbnail,channelThumb,title,channel,id})=>{
                 </Link>
             </ImgWrapper>
             <TextWrapper>
-                <ChannelImgWrapper>
+               {/*  <ChannelImgWrapper>
                     <img src={channelThumb} alt="" />
-                </ChannelImgWrapper>
+                </ChannelImgWrapper> */}
                 <VideoInfoWrapper>
                     <h2>{title}</h2>
                     <h3>{channel}</h3>

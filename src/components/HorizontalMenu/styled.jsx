@@ -29,13 +29,14 @@ export const MobileMenuWrapper = styled.div`
     flex-direction: row;
 `
 export const MobileMenuItem = styled.div`
-    width: 5%;
+    width: 10%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
     & a{
+        font-size: 20px;
         text-decoration: none;
         width: 100%;
     }

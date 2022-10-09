@@ -33,9 +33,6 @@ export default function App() {
             <Route path="/search/:query" element={<SearchResult/>} />
           </Routes>
         </Template>
-        <Routes>
-          <Route path="/login" element={<Login/>}/>
-        </Routes>
       </>
   )
 }

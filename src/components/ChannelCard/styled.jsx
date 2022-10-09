@@ -11,6 +11,9 @@ export const CardContainer = styled.div`
     @media only screen and (max-width: 500px){
         width: 100%;
     }
+    & p{
+        font-family: 'Poppins';
+    }
 `
 
 export const ImgWrapper = styled.div`

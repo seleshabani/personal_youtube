@@ -23,7 +23,7 @@ export const HorizontalMenu = ()=>{
         }
         setAuth2().then(()=>{
             switchIsLogin();
-            navigateTo('/login');
+            navigateTo('/');
         })
     }
 

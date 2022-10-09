@@ -4,6 +4,7 @@ export const CardContainer = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
     @media only screen and (max-width: 860px){
         width: 45%;
     }
@@ -40,13 +41,32 @@ export const ChannelImgWrapper = styled.div`
     }
 `
 export const VideoInfoWrapper = styled.div`
+    margin-top: 5px;
     width: calc(100% - 70px);
     font-family: 'Poppins';
     & h2{
         font-size: 0.8vw;
+        margin-bottom: 5px;
+        
     }
     & h3 {
         font-size: 0.7vw;
         color: ${props=>props.theme.colors.red};
+    }
+    @media only screen and (max-width: 430px){
+        & h2{
+            font-size: 14px;
+        }
+        & h3{
+            font-size: 12px;
+        }
+    }
+    @media only screen and (max-width: 780px){
+        & h2{
+            font-size: 13px;
+        }
+        & h3{
+            font-size: 11px;
+        }
     }
 `
