@@ -36,11 +36,11 @@ export const HorizontalMenu = ()=>{
                             <i className="fa fa-home"></i>
                         </Link>
                     </MobileMenuItem>
-                    <MobileMenuItem>
+                    {/* <MobileMenuItem>
                         <Link to='/favoris'>
                             <i className="fa fa-heart"></i>
                         </Link>
-                    </MobileMenuItem>
+                    </MobileMenuItem> */}
                     <MobileMenuItem>
                         <Link to='/channels'>
                             <i className="fa fa-tv"></i>
