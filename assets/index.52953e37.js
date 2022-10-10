@@ -542,12 +542,16 @@ Error generating stack: `+nt.message+`
 `,Channels=()=>{const o=JSON.parse(localStorage.getItem("user")),[i,s]=react.exports.useState([]),[et,tt]=react.exports.useState(!0),[nt,rt]=react.exports.useState(!1);react.exports.useEffect(()=>{fetch("https://www.googleapis.com/youtube/v3/subscriptions?part=id,snippet,contentDetails&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&mine=true",{method:"GET",headers:new Headers({Authorization:`Bearer ${o.googleId}`})}).then(it=>it.json()).then(it=>{s(it.items),tt(!1)}).catch(()=>rt(!0))},[]);const ot=()=>i===void 0?jsx("h1",{children:"Erreur lors de la r\xE9cup\xE8ration des donn\xE9es au serveur"}):i.map(it=>jsx(ChannelCard,{thumbnail:it.snippet.thumbnails.medium.url,title:it.snippet.title,id:it.snippet.resourceId.channelId},it.id));return nt?jsx(Fragment,{children:"Erreur lors du chargement"}):jsx(ContainerWrapper$1,{children:et?jsx("h1",{children:"Chargement en cours..."}):jsx(ot,{})})},ContainerWrapper=styled.div`
      & iframe{
         margin-top: 30px;
-        width: 60%;
+        width: 100%;
+        height: 400px;
         border: none;
         outline: none;
         border-radius: 5px;
     }
-`,Single=()=>{const{id:o}=useParams(),[i,s]=react.exports.useState([]),[et,tt]=react.exports.useState(!0);return react.exports.useEffect(()=>{fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${o}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`).then(nt=>nt.json()).then(nt=>{s(nt.items),tt(!1)}).catch(nt=>console.log(nt))},[]),et?jsx("h1",{children:"En cours de chargement"}):jsxs(ContainerWrapper,{children:[jsx("iframe",{width:"460",height:"230",src:`https://www.youtube.com/embed/${o}`}),jsx("h1",{children:i[0].snippet.title})]})},VideoContainer=styled.div`
+    & h1{
+        font-family: 'Poppins';
+    }
+`,Single=()=>{const{id:o}=useParams(),[i,s]=react.exports.useState([]),[et,tt]=react.exports.useState(!0);return react.exports.useEffect(()=>{fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${o}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`).then(nt=>nt.json()).then(nt=>{s(nt.items),tt(!1)}).catch(nt=>console.log(nt))},[]),et?jsx("h1",{children:"En cours de chargement"}):jsxs(ContainerWrapper,{children:[jsx("iframe",{src:`https://www.youtube.com/embed/${o}`}),jsx("h1",{children:i[0].snippet.title})]})},VideoContainer=styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
