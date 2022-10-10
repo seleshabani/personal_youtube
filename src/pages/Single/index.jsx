@@ -21,7 +21,7 @@ export const Single = ()=>{
     if(isLoading) return <h1>En cours de chargement</h1>
     return(
        <ContainerWrapper>
-            <iframe width="460" height="230" src={`https://www.youtube.com/embed/${id}`}></iframe>
+            <iframe src={`https://www.youtube.com/embed/${id}`}></iframe>
             <h1>{video[0].snippet.title}</h1>
         </ContainerWrapper>
     )
