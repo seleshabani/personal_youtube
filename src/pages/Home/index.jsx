@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { useContext } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { VideoCard } from "../../components/VideoCard";
+import { UserLoginStatusContext } from "../../context/userLoginStatus";
 import { ContainerWrapper } from "./styled";
 
 export const Home = ()=>{
@@ -9,6 +12,7 @@ export const Home = ()=>{
     const [videos, setVideos] = useState([]);
     const [error, setError] = useState(false)
     const user = JSON.parse(localStorage.getItem('user'))
+    const navigateTo = useNavigate()
 
     useEffect(()=>{
         fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&access_token='+user.googleId)
