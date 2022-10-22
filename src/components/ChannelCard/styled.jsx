@@ -5,6 +5,7 @@ export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom:10px;
+    transition: all 300ms;
     @media only screen and (max-width: 860px){
         width: 45%;
     }
@@ -13,6 +14,9 @@ export const CardContainer = styled.div`
     }
     & p{
         font-family: 'Poppins';
+    }
+    &:hover{
+        color: ${props=>props.theme.colors.red};
     }
 `
 
