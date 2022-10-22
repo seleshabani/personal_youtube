@@ -4,6 +4,7 @@ export const MenuContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 60px;
     padding-top: 10px;
     position: sticky;
     top: 0px;

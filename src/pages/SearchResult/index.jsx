@@ -8,6 +8,7 @@ export const SearchResult = ()=>{
     const {query} = useParams();
     const user = JSON.parse(localStorage.getItem('user'))
     const [results,setResults] = useState([])
+    const [isLoading,setIsLoading] = useState(true);
     
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{
@@ -15,7 +16,10 @@ export const SearchResult = ()=>{
             headers:new Headers({'Authorization':'Bearer '+user.googleId})
         })
         .then(response=>response.json())
-        .then(data=>setResults(data.items))
+        .then(data=>{
+            setResults(data.items);
+            setIsLoading(false)
+        })
     },[])
 
     const ResultsMap = ()=>{
@@ -26,7 +30,7 @@ export const SearchResult = ()=>{
     }
 
     return (
-        <SearchResultContainer>
+        <SearchResultContainer isLoading={isLoading}>
             <h1>Résultat pour : {query}</h1>
             <SearchResultContainerWrapper>
                 <ResultsMap/>

@@ -27,4 +27,7 @@ export const Theme = createGlobalStyle`
     label{
         font-family: 'Poppins';
     }
+    .active {
+        color:${props=>props.theme.colors.red} ;
+    }
 `

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Spinner } from "../../components/Spinner";
 import { VideoCard } from "../../components/VideoCard";
 import { VideoContainer } from "./styled";
 
@@ -24,8 +25,8 @@ export const VideosForChannel = ()=>{
     }
 
     return(
-        <VideoContainer>
-            {isload?<h1>Chargement en cours...</h1>:<VideosMap/>}
+        <VideoContainer isLoading={isload}>
+            {isload?<Spinner/>:<VideosMap/>}
         </VideoContainer>
     )
 }

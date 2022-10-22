@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { VideoCard } from "../../components/VideoCard";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
 import { ContainerWrapper } from "./styled";
+import { Spinner } from "../../components/Spinner";
 
 export const Home = ()=>{
     const [isLoading, setIsLoading] = useState(true)
@@ -28,8 +29,8 @@ export const Home = ()=>{
     if (error) return <h1>Erreur dans la requête serveur</h1>
     
     return(
-        <ContainerWrapper>
-             {isLoading?<h1>Chargement en cours...</h1>:<VideosMap/>}
+        <ContainerWrapper isLoading={isLoading}>
+             {isLoading?<Spinner/>:<VideosMap/>}
         </ContainerWrapper>
     )
     

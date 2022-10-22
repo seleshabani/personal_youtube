@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from "react";
 import { ChannelCard } from "../../components/ChannelCard";
 import { ContainerWrapper } from "./styled";
+import { CirclesWithBar } from 'react-loader-spinner'
+import { Spinner } from "../../components/Spinner";
 
 export const Channels = ()=>{
     const user = JSON.parse(localStorage.getItem('user'));
@@ -21,8 +23,8 @@ export const Channels = ()=>{
      }
     if(error) return <>Erreur lors du chargement</>
     return (
-        <ContainerWrapper>
-             {isLoading?<h1>Chargement en cours...</h1>:<ChannelsMap/>}
+        <ContainerWrapper isLoading={isLoading}>
+             {isLoading?<Spinner/>:<ChannelsMap/>}
         </ContainerWrapper>
     )
 }

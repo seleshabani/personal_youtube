@@ -6,7 +6,7 @@ export const ContainerWrapper = styled.div`
     height: max-content;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: ${({isLoading})=>isLoading?'center':'space-between'};
     flex-wrap: wrap;
     word-wrap: break-word;
 `

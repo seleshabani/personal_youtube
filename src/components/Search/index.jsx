@@ -40,7 +40,7 @@ export const Search = ()=>{
                     <input type="text" ref={inputSearchRef} onChange={searchHandler} onClick={()=>{setIsVisible(!isVisible)}}/>
                 </InputContainer>
                 <BtnContainer>
-                    <button>ok</button>
+                    <button><i className="fa fa-search"></i></button>
                 </BtnContainer>
             </form>
             <ResultContainer visible={isVisible} isDark={theme}>

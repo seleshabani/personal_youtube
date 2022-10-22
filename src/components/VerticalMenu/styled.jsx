@@ -18,7 +18,7 @@ export const Container = styled.div`
 `
 export const Logo = styled.div`
     width: 100%;
-    height: 70px;
+    height: 50px;
     display: flex;
     padding-left: 10%;
     align-items: center;
