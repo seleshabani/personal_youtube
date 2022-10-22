@@ -15,9 +15,12 @@ export const SearchContainer = styled.div`
         align-items: center;
         align-content: center;
     }
+    @media only screen and (max-width: 430px){     
+        width: 80%;
+    } 
 `
 export const InputContainer = styled.div`
-    width: 90%;
+    width: 85%;
     height: 30px;
     & input{
         width: 100%;
@@ -28,7 +31,7 @@ export const InputContainer = styled.div`
     }
 `
 export const BtnContainer = styled.div`
-    width: 10%;
+    width: 15%;
     & button{
         background-color: ${props=>props.theme.colors.red};
         color: white;
@@ -36,6 +39,7 @@ export const BtnContainer = styled.div`
         height: 30px;
         border-bottom-right-radius: 5px;
         border-top-right-radius: 5px;
+        padding: 5px;
         cursor: pointer;
     }
 `

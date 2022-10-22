@@ -11,13 +11,17 @@ export const MenuContainer = styled.div`
     transition: 300ms;
     border-bottom: solid 1px ${props=>props.theme.colors.grey};
     background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
+    @media only screen and (max-width: 430px){ 
+        height: ${({isVisible})=>isVisible?'100px':'50px'}
+     }
 `
 export const MobileMenu = styled.div`
     display: none;
     @media only screen and (max-width: 430px){      
         height: 50px;
         width: 100%;
-        display: flex;
+        /* display: flex; */
+        display: ${({isVisible})=>isVisible?'flex':'none'};
         justify-content: center;
         align-items: center;
         align-content: center;
@@ -25,19 +29,19 @@ export const MobileMenu = styled.div`
 `
 export const MobileMenuWrapper = styled.div`
     width: 90%;
-    height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 `
 export const MobileMenuItem = styled.div`
-    width: 10%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
     & a{
-        font-size: 20px;
+        font-size: 15px;
+        margin-bottom: 5px;
         text-decoration: none;
         width: 100%;
     }
@@ -61,6 +65,10 @@ export const BtnsActionContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    @media only screen and (max-width: 430px){      
+        display: none;
+        //border: solid yellow;
+    } 
 `
 export const ThemeBtnContainer = styled.div`
     width: 5%;
@@ -93,4 +101,26 @@ export const ProfileBtnContainer = styled.div`
         cursor: pointer;
         margin-right: 10px;
     }
+`
+export const MobileMenuTrigger = styled.div`
+    display: none;
+    @media only screen and (max-width: 430px){      
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        cursor: pointer;
+    } 
+`
+export const MobileMenuThemeTrigger = styled.div`
+    display: none;
+    @media only screen and (max-width: 430px){      
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        cursor: pointer;
+    } 
 `
