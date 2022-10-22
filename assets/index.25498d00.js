@@ -199,11 +199,15 @@ Error generating stack: `+nt.message+`
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    transition: all 300ms;
     @media only screen and (max-width: 860px){
         width: 45%;
     }
     @media only screen and (max-width: 500px){
         width: 100%;
+    }
+    &:hover{
+        color: ${o=>o.theme.colors.red};
     }
 `,ImgWrapper$1=styled.div`
     height: 150px;
@@ -500,12 +504,12 @@ Error generating stack: `+nt.message+`
     top: 0px; */
 /*  background-color: ${o=>o.isDark=="light"?o.theme.colors.text_white:o.theme.colors.text_black}; */
 `,BtnsActionContainer=styled.div`
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 `,ThemeBtnContainer=styled.div`
-    width: 10%;
+    width: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -513,52 +517,31 @@ Error generating stack: `+nt.message+`
         cursor: pointer;
     }
 `,ProfileBtnContainer=styled.div`
-    width: 10%;
-    overflow: visible;
-    & .trigger{
-        background-color: ${o=>o.theme.colors.grey};
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    .profil_img{
         border-radius: 50%;
         height: 40px;
         width: 40px;
         margin-bottom: 10px;
-        cursor: pointer;
         overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
         & img{
             width: 100%;
             height: 100%;
-
         }
     }
-    & .dropdowns{
-        flex-direction: column;
-        width: 100px;
-        height: auto;
-        position: relative;
-        background-color: ${o=>o.isDark=="light"?o.theme.colors.text_white:o.theme.colors.text_black};
-        top: -10px;
-        display: none;
-        transition: 300ms;
-        box-shadow: 0px 2px 2px 0px;
-        border-radius: 5px;
-        padding: 10px;
-        & span{
-            font-family: 'Poppins';
-            cursor: pointer;
-            font-size: 0.6rem;
-        }
+    .logout{
+        cursor: pointer;
+        margin-right: 10px;
     }
-
-    & .trigger:hover + .dropdowns,.dropdowns:hover{
-        display: flex;
-    }
-`,SearchContainer=styled.div`
-    width: 60%;
+`,useOutside=o=>{const[i,s]=react.exports.useState(!1);return react.exports.useEffect(()=>{function et(tt){o.current&&!o.current.contains(tt.target)&&s(!1)}return document.addEventListener("mousedown",et),()=>{document.removeEventListener("mousedown",et)}},[o]),{resultVisible:i,setResultVisible:s}},SearchContainer=styled.div`
+    width: 40%;
     height: 40px;
-    margin-right: 10%;
+    margin-right: 5%;
     display: flex;
     flex-direction: column;
     overflow: visible;
@@ -599,11 +582,12 @@ Error generating stack: `+nt.message+`
     margin-top: 2px;
     background-color: ${o=>o.isDark=="light"?o.theme.colors.text_white:o.theme.colors.text_black};
     z-index: 10;
-    box-shadow: 0px 1px 5px 2px;
+    box-shadow: 0px 1px 1px 2px;
     border-radius: 5px;
     word-wrap: break-word;
     display: ${o=>o.visible?"flex":"none"};
     flex-direction: column;
+    overflow-x: hidden;
     & a{
         width: 100%;
         font-family: 'Poppins';
@@ -613,7 +597,16 @@ Error generating stack: `+nt.message+`
     & a:hover{
         background-color: #99878a;
     }
-`,Search=()=>{const[o,i]=react.exports.useState(!1),{theme:s}=react.exports.useContext(CustomThemeContext),et=react.exports.useRef(null),tt=useNavigate(),[nt,rt]=react.exports.useState([]),ot=JSON.parse(localStorage.getItem("user"));return jsxs(SearchContainer,{children:[jsxs("form",{action:"",onSubmit:ut=>{ut.preventDefault(),i(!1),tt("/search/"+et.current.value)},children:[jsx(InputContainer,{children:jsx("input",{type:"text",ref:et,onChange:()=>{let ut=et.current.value;fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${ut}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{method:"GET",headers:new Headers({Authorization:"Bearer "+ot.googleId})}).then(ct=>ct.json()).then(ct=>rt(ct.items))},onClick:()=>{i(!o)}})}),jsx(BtnContainer,{children:jsx("button",{children:jsx("i",{className:"fa fa-search"})})})]}),jsx(ResultContainer,{visible:o,isDark:s,children:jsx(()=>nt===void 0?jsx("h1",{children:"Erreur"}):nt.map((ut,ct)=>jsx(Link,{onClick:()=>{i(!1)},to:`video/${ut.id.videoId}`,children:ut.snippet.title},ct)),{})})]})},HorizontalMenu=()=>{const{switchIsLogin:o}=react.exports.useContext(UserLoginStatusContext),{theme:i,themeSwitcher:s}=react.exports.useContext(CustomThemeContext),et=useNavigate(),tt=JSON.parse(localStorage.getItem("user")),nt="86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com",rt=()=>{(async()=>{const it=await loadAuth2(gapi,nt,"https://www.googleapis.com/auth/youtube");it.isSignedIn.get()&&it.signOut()})().then(()=>{o(),et("/")})};return jsxs(MenuContainer,{isDark:i,children:[jsx(MobileMenu,{children:jsxs(MobileMenuWrapper,{children:[jsx(MobileMenuItem,{children:jsx(Link,{to:"/home",children:jsx("i",{className:"fa fa-home"})})}),jsx(MobileMenuItem,{children:jsx(Link,{to:"/channels",children:jsx("i",{className:"fa fa-tv"})})})]})}),jsxs(MenuBar,{isDark:i,children:[jsx(Search,{}),jsxs(BtnsActionContainer,{children:[jsx(ThemeBtnContainer,{onClick:s,children:i==="light"?jsx("i",{className:"fa fa-sun"}):jsx("i",{className:"fa fa-moon"})}),jsxs(ProfileBtnContainer,{isDark:i,children:[jsx("div",{className:"trigger",children:tt?jsx("img",{src:tt.profil_picture,alt:"profil utilisateur"}):jsx("i",{className:"fa fa-user"})}),jsx("div",{className:"dropdowns",children:jsx("span",{onClick:rt,children:"deconnexion"})})]})]})]})]})},Container=styled.div`
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+    background-color: white;
+    }
+    &::-webkit-scrollbar-thumb {
+    background-color: ${o=>o.theme.colors.red};
+    }
+`,Search=()=>{const[o,i]=react.exports.useState(!1),{theme:s}=react.exports.useContext(CustomThemeContext),et=react.exports.useRef(null),tt=useNavigate(),[nt,rt]=react.exports.useState([]),ot=JSON.parse(localStorage.getItem("user")),{resultVisible:it,setResultVisible:lt}=useOutside(et);return jsxs(SearchContainer,{children:[jsxs("form",{action:"",onSubmit:pt=>{pt.preventDefault(),et.current.value.length!=0?(i(!1),tt("/search/"+et.current.value)):console.log("vide")},children:[jsx(InputContainer,{children:jsx("input",{type:"text",ref:et,onChange:()=>{let pt=et.current.value;lt(!0),fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${pt}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{method:"GET",headers:new Headers({Authorization:"Bearer "+ot.googleId})}).then(ht=>ht.json()).then(ht=>rt(ht.items))}})}),jsx(BtnContainer,{children:jsx("button",{children:jsx("i",{className:"fa fa-search"})})})]}),jsx(ResultContainer,{visible:it,isDark:s,children:jsx(()=>nt===void 0?jsx("h1",{children:"Erreur"}):nt.map((pt,ht)=>jsx(Link,{onClick:()=>{i(!1)},to:`video/${pt.id.videoId}`,children:pt.snippet.title},ht)),{})})]})},HorizontalMenu=()=>{const{switchIsLogin:o}=react.exports.useContext(UserLoginStatusContext),{theme:i,themeSwitcher:s}=react.exports.useContext(CustomThemeContext),et=useNavigate(),tt=JSON.parse(localStorage.getItem("user")),nt="86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com";return jsxs(MenuContainer,{isDark:i,children:[jsx(MobileMenu,{children:jsxs(MobileMenuWrapper,{children:[jsx(MobileMenuItem,{children:jsx(Link,{to:"/home",children:jsx("i",{className:"fa fa-home"})})}),jsx(MobileMenuItem,{children:jsx(Link,{to:"/channels",children:jsx("i",{className:"fa fa-tv"})})})]})}),jsxs(MenuBar,{isDark:i,children:[jsx(Search,{}),jsxs(BtnsActionContainer,{children:[jsx(ThemeBtnContainer,{onClick:s,children:i==="light"?jsx("i",{className:"fa fa-sun"}):jsx("i",{className:"fa fa-moon"})}),jsxs(ProfileBtnContainer,{isDark:i,children:[jsx("div",{className:"logout",children:jsx("span",{onClick:()=>{(async()=>{const it=await loadAuth2(gapi,nt,"https://www.googleapis.com/auth/youtube");it.isSignedIn.get()&&it.signOut()})().then(()=>{o(),et("/")})},children:"d\xE9connexion"})}),jsx("div",{className:"profil_img",children:tt?jsx("img",{src:tt.profil_picture,alt:"profil utilisateur"}):jsx("i",{className:"fa fa-user"})})]})]})]})]})},Container=styled.div`
     width: 25%;
     height: 100vh;
     display: flex;
@@ -672,6 +665,7 @@ Error generating stack: `+nt.message+`
     display: flex;
     flex-direction: column;
     margin-bottom:10px;
+    transition: all 300ms;
     @media only screen and (max-width: 860px){
         width: 45%;
     }
@@ -680,6 +674,9 @@ Error generating stack: `+nt.message+`
     }
     & p{
         font-family: 'Poppins';
+    }
+    &:hover{
+        color: ${o=>o.theme.colors.red};
     }
 `,ImgWrapper=styled.div`
     height: 150px;
@@ -719,7 +716,7 @@ Error generating stack: `+nt.message+`
     flex-wrap: wrap;
     justify-content: ${({isLoading:o})=>o?"center":"space-between"};
     padding-top: 10px;
-`,VideosForChannel=()=>{const{channelId:o}=useParams(),[i,s]=react.exports.useState([]),[et,tt]=react.exports.useState(!0);return JSON.parse(localStorage.getItem("user")),react.exports.useEffect(()=>{fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${o}&type=video&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`).then(rt=>rt.json()).then(rt=>{s(rt.items),tt(!1)})},[]),jsx(VideoContainer,{isLoading:et,children:et?jsx(Spinner,{}):jsx(()=>i.length===0?jsx(Fragment,{children:"Aucune donn\xE9es"}):i.map((rt,ot)=>jsx(VideoCard,{id:rt.id.videoId,title:rt.snippet.title,thumbnail:rt.snippet.thumbnails.medium.url,channelThumb:"#",channel:rt.snippet.channelTitle},ot)),{})})},SearchResultContainerWrapper=styled.div`
+`,VideosForChannel=()=>{const{channelId:o}=useParams(),[i,s]=react.exports.useState([]),[et,tt]=react.exports.useState(!0);JSON.parse(localStorage.getItem("user"));const[nt,rt]=react.exports.useState(!1);react.exports.useEffect(()=>{fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${o}&type=video&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`).then(it=>it.json()).then(it=>{s(it.items),tt(!1)}).catch(()=>rt(!0))},[]);const ot=()=>(i===void 0&&rt(!0),i.length===0?jsx(Fragment,{children:"Aucune donn\xE9es"}):i.map((it,lt)=>jsx(VideoCard,{id:it.id.videoId,title:it.snippet.title,thumbnail:it.snippet.thumbnails.medium.url,channelThumb:"#",channel:it.snippet.channelTitle},lt)));return nt?jsx("h1",{children:"Erreur lors de la r\xE9cup\xE8ration de vos donn\xE9es"}):jsx(VideoContainer,{isLoading:et,children:et?jsx(Spinner,{}):jsx(ot,{})})},SearchResultContainerWrapper=styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
