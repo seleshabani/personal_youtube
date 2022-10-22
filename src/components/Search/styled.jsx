@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const SearchContainer = styled.div`
-    width: 60%;
+    width: 40%;
     height: 40px;
-    margin-right: 10%;
+    margin-right: 5%;
     display: flex;
     flex-direction: column;
     overflow: visible;
@@ -47,11 +47,12 @@ export const ResultContainer = styled.div`
     margin-top: 2px;
     background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
     z-index: 10;
-    box-shadow: 0px 1px 5px 2px;
+    box-shadow: 0px 1px 1px 2px;
     border-radius: 5px;
     word-wrap: break-word;
     display: ${props=>props.visible?"flex":"none"};
     flex-direction: column;
+    overflow-x: hidden;
     & a{
         width: 100%;
         font-family: 'Poppins';
@@ -60,5 +61,14 @@ export const ResultContainer = styled.div`
     }
     & a:hover{
         background-color: #99878a;
+    }
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+    background-color: white;
+    }
+    &::-webkit-scrollbar-thumb {
+    background-color: ${props=>props.theme.colors.red};
     }
 `

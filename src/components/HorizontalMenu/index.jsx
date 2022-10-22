@@ -55,11 +55,11 @@ export const HorizontalMenu = ()=>{
                         {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
                     </ThemeBtnContainer>
                     <ProfileBtnContainer isDark={theme}>
-                        <div className="trigger">
-                        {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
+                        <div className="logout">
+                            <span onClick={logOut}>déconnexion</span>
                         </div>
-                        <div className="dropdowns">
-                            <span onClick={logOut}>deconnexion</span>
+                        <div className="profil_img">
+                        {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
                         </div>
                     </ProfileBtnContainer>
                 </BtnsActionContainer>
