@@ -124,3 +124,14 @@ export const MobileMenuThemeTrigger = styled.div`
         cursor: pointer;
     } 
 `
+export const MobileMenuLogOut = styled.div`
+    display: none;
+    @media only screen and (max-width: 430px){      
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        cursor: pointer;
+    } 
+`

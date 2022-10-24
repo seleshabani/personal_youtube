@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { CustomThemeContext } from "../../context/customTheme";
 import { UserLoginStatusContext } from "../../context/userLoginStatus";
 import {Link, NavLink, useNavigate} from 'react-router-dom'
-import {  BtnsActionContainer, MenuBar, MenuContainer, MobileMenu, MobileMenuItem, MobileMenuThemeTrigger, MobileMenuTrigger, MobileMenuWrapper, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
+import {  BtnsActionContainer, MenuBar, MenuContainer, MobileMenu, MobileMenuItem, MobileMenuLogOut, MobileMenuThemeTrigger, MobileMenuTrigger, MobileMenuWrapper, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
 import { gapi,loadAuth2 } from "gapi-script";
 import { Search } from "../Search";
 
@@ -60,12 +60,16 @@ export const HorizontalMenu = ()=>{
                         </div>
                     </ProfileBtnContainer>
                 </BtnsActionContainer>
-                <MobileMenuTrigger onClick={()=>setmobileIsVisible(!mobileIsVisible)}>
-                    <i onClick={()=>setmobileIsVisible(!mobileIsVisible)} className="fa fa-hamburger"></i>
-                </MobileMenuTrigger>
                 <MobileMenuThemeTrigger onClick={themeSwitcher}>
                 {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
                 </MobileMenuThemeTrigger>
+                <MobileMenuLogOut>
+                    <i className="fa fa-sign-out"></i>
+                </MobileMenuLogOut>
+                <MobileMenuTrigger onClick={()=>setmobileIsVisible(!mobileIsVisible)}>
+                    <i onClick={()=>setmobileIsVisible(!mobileIsVisible)} className="fa fa-hamburger"></i>
+                </MobileMenuTrigger>
+                
             </MenuBar>
         </MenuContainer>
     )

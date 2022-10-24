@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Spinner } from "../../components/Spinner";
 import { ContainerWrapper } from "./styled";
 
 export const Single = ()=>{
@@ -18,7 +19,7 @@ export const Single = ()=>{
         .catch(error=>console.log(error))
     },[])
 
-    if(isLoading) return <h1>En cours de chargement</h1>
+    if(isLoading) return <Spinner/>
     return(
        <ContainerWrapper>
             <iframe src={`https://www.youtube.com/embed/${id}`}></iframe>
