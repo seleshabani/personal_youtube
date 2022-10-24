@@ -16,7 +16,7 @@ export const RightContainer = styled.div`
         width: 80%;
         margin-left: 20%;
     }
-    @media only screen and (max-width: 430px){
+    @media only screen and (max-width: 500px){
         width: 100%;
         margin-left: 0px;
     }

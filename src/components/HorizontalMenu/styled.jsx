@@ -11,13 +11,13 @@ export const MenuContainer = styled.div`
     transition: 300ms;
     border-bottom: solid 1px ${props=>props.theme.colors.grey};
     background-color: ${props=>props.isDark=='light'?props.theme.colors.text_white:props.theme.colors.text_black};
-    @media only screen and (max-width: 430px){ 
+    @media only screen and (max-width: 500px){ 
         height: ${({isVisible})=>isVisible?'100px':'50px'}
      }
 `
 export const MobileMenu = styled.div`
     display: none;
-    @media only screen and (max-width: 430px){      
+    @media only screen and (max-width: 500px){      
         height: 50px;
         width: 100%;
         /* display: flex; */
@@ -66,7 +66,7 @@ export const BtnsActionContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    @media only screen and (max-width: 430px){      
+    @media only screen and (max-width: 500px){      
         display: none;
         //border: solid yellow;
     } 
@@ -110,7 +110,7 @@ export const ProfileBtnContainer = styled.div`
 `
 export const MobileMenuTrigger = styled.div`
     display: none;
-    @media only screen and (max-width: 430px){      
+    @media only screen and (max-width: 500px){      
         width: 40px;
         display: flex;
         justify-content: center;
@@ -121,7 +121,7 @@ export const MobileMenuTrigger = styled.div`
 `
 export const MobileMenuThemeTrigger = styled.div`
     display: none;
-    @media only screen and (max-width: 430px){      
+    @media only screen and (max-width: 500px){      
         width: 40px;
         display: flex;
         justify-content: center;
@@ -132,7 +132,7 @@ export const MobileMenuThemeTrigger = styled.div`
 `
 export const MobileMenuLogOut = styled.div`
     display: none;
-    @media only screen and (max-width: 430px){      
+    @media only screen and (max-width: 500px){      
         width: 40px;
         display: flex;
         justify-content: center;

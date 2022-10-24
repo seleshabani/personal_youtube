@@ -42,6 +42,7 @@ export const ChannelImgWrapper = styled.div`
     & img{
         width: 100%;
         height: auto;
+        object-fit: cover;
     }
 `
 export const VideoInfoWrapper = styled.div`
@@ -57,7 +58,7 @@ export const VideoInfoWrapper = styled.div`
         font-size: 0.7vw;
         color: ${props=>props.theme.colors.red};
     }
-    @media only screen and (max-width: 430px){
+    @media only screen and (max-width: 500px){
         & h2{
             font-size: 14px;
         }

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link,NavLink } from "react-router-dom";
-import { Container, Logo, MenuEl, MenuWrapper } from "./styled";
+import { Container, HomeIcon, Logo, MenuEl, MenuWrapper } from "./styled";
+import { Icon } from '@iconify/react';
 
 export const VerticalMenu = ()=>{
     return(
@@ -10,7 +11,7 @@ export const VerticalMenu = ()=>{
             </Logo>
             <MenuWrapper>
                 <MenuEl>
-                    <i className="fa fa-home"></i>
+                    <HomeIcon icon="ant-design:home-outlined"/>
                     <NavLink to='/home'>Accueil</NavLink>
                 </MenuEl>
                {/*  <MenuEl>

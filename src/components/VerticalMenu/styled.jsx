@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -12,7 +13,7 @@ export const Container = styled.div`
     @media only screen and (max-width: 860px){
         width: 20%;
     }
-    @media only screen and (max-width: 430px){
+    @media only screen and (max-width: 500px){
         display: none;
     } 
 `
@@ -57,4 +58,9 @@ export const MenuEl = styled.div`
             font-size:1.5vw
         }
     }
+`
+export const HomeIcon = styled(Icon)`
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
 `

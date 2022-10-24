@@ -15,7 +15,7 @@ export const SearchContainer = styled.div`
         align-items: center;
         align-content: center;
     }
-    @media only screen and (max-width: 430px){     
+    @media only screen and (max-width: 500px){     
         width: 80%;
     } 
 `
