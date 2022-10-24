@@ -63,8 +63,8 @@ export const HorizontalMenu = ()=>{
                 <MobileMenuThemeTrigger onClick={themeSwitcher}>
                 {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
                 </MobileMenuThemeTrigger>
-                <MobileMenuLogOut>
-                    <i className="fa fa-sign-out"></i>
+                <MobileMenuLogOut onClick={logOut}>
+                    <i onClick={logOut} className="fa fa-sign-out"></i>
                 </MobileMenuLogOut>
                 <MobileMenuTrigger onClick={()=>setmobileIsVisible(!mobileIsVisible)}>
                     <i onClick={()=>setmobileIsVisible(!mobileIsVisible)} className="fa fa-hamburger"></i>
