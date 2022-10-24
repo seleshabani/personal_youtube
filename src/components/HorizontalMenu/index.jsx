@@ -48,9 +48,7 @@ export const HorizontalMenu = ()=>{
             <MenuBar isDark={theme}>
                 <Search/>
                 <BtnsActionContainer>
-                    <ThemeBtnContainer onClick={themeSwitcher}>
-                        {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
-                    </ThemeBtnContainer>
+                    
                     <ProfileBtnContainer isDark={theme}>
                         <div className="logout">
                             <span onClick={logOut}>déconnexion</span>
@@ -59,6 +57,9 @@ export const HorizontalMenu = ()=>{
                         {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
                         </div>
                     </ProfileBtnContainer>
+                    <ThemeBtnContainer onClick={themeSwitcher}>
+                        {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}
+                    </ThemeBtnContainer>
                 </BtnsActionContainer>
                 <MobileMenuThemeTrigger onClick={themeSwitcher}>
                 {(theme === 'light')?<i className="fa fa-sun"></i>:<i className="fa fa-moon"></i>}

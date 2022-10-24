@@ -116,8 +116,10 @@ export const RightContainerWrapper = styled.div`
 export const ImageContainer = styled.div`
     width: 100%;
     height: 300px;
+    
     & img{
         height: 100%;
+        object-fit: contain;
     }
 `
     

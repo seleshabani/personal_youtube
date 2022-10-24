@@ -49,11 +49,12 @@ export const MobileMenuItem = styled.div`
 export const MenuBar = styled.div`
     /* height: 50px; */
     width: 100%;
+    padding-left: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     align-content: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     /* border-bottom: solid 1px ${props=>props.theme.colors.grey};
     padding-top: 10px;
     position: sticky;
@@ -100,6 +101,11 @@ export const ProfileBtnContainer = styled.div`
     .logout{
         cursor: pointer;
         margin-right: 10px;
+        font-family: 'Poppins';
+        &:hover{
+            color: ${props=>props.theme.colors.red};
+            transition: all 300ms;
+        }
     }
 `
 export const MobileMenuTrigger = styled.div`

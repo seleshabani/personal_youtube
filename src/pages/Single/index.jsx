@@ -19,11 +19,12 @@ export const Single = ()=>{
         .catch(error=>console.log(error))
     },[])
 
-    if(isLoading) return <Spinner/>
     return(
-       <ContainerWrapper>
+       <ContainerWrapper isLoading={isLoading}>
+            {isLoading?<Spinner/>:<>
             <iframe src={`https://www.youtube.com/embed/${id}`}></iframe>
             <h1>{video[0].snippet.title}</h1>
+            </>}
         </ContainerWrapper>
     )
 }
