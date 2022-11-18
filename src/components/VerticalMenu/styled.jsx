@@ -54,8 +54,11 @@ export const MenuEl = styled.div`
     }
     @media only screen and (max-width: 860px){
         width: 20%;
+        & i{
+            width: 50px;
+        }
         & a {
-            font-size:1.5vw
+            font-size:1.3vw
         }
     }
 `

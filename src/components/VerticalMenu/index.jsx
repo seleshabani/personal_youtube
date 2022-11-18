@@ -11,7 +11,8 @@ export const VerticalMenu = ()=>{
             </Logo>
             <MenuWrapper>
                 <MenuEl>
-                    <HomeIcon icon="ant-design:home-outlined"/>
+                   {/*  <HomeIcon icon="ant-design:home-outlined"/> */}
+                   <i className="fa fa-home"></i>
                     <NavLink to='/home'>Accueil</NavLink>
                 </MenuEl>
                {/*  <MenuEl>
@@ -19,7 +20,7 @@ export const VerticalMenu = ()=>{
                     <NavLink to='/favoris'>Favoris</NavLink>
                 </MenuEl> */}
                 <MenuEl>
-                    <i className="fa fa-tv"></i>
+                    <i class="fa-solid fa-clapperboard"></i>
                     <NavLink to='/channels'>Mes Chaînes</NavLink>
                 </MenuEl>
             </MenuWrapper>
