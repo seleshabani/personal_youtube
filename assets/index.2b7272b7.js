@@ -707,15 +707,18 @@ Error generating stack: `+nt.message+`
     }
     @media only screen and (max-width: 860px){
         width: 20%;
+        & i{
+            width: 50px;
+        }
         & a {
-            font-size:1.5vw
+            font-size:1.3vw
         }
     }
-`,HomeIcon=styled(Icon)`
+`;styled(Icon)`
     width: 25px;
     height: 25px;
     margin-right: 5px;
-`,VerticalMenu=()=>jsxs(Container,{children:[jsx(Logo,{children:jsx(NavLink,{to:"/home",children:"YouTube App"})}),jsxs(MenuWrapper,{children:[jsxs(MenuEl,{children:[jsx(HomeIcon,{icon:"ant-design:home-outlined"}),jsx(NavLink,{to:"/home",children:"Accueil"})]}),jsxs(MenuEl,{children:[jsx("i",{className:"fa fa-tv"}),jsx(NavLink,{to:"/channels",children:"Mes Cha\xEEnes"})]})]})]}),Template=({children:o})=>jsxs(Container$1,{children:[jsx(VerticalMenu,{}),jsxs(RightContainer,{children:[jsx(HorizontalMenu,{}),jsx(ContentWrapper,{children:o})]})]}),CardContainer=styled.div`
+`;const VerticalMenu=()=>jsxs(Container,{children:[jsx(Logo,{children:jsx(NavLink,{to:"/home",children:"YouTube App"})}),jsxs(MenuWrapper,{children:[jsxs(MenuEl,{children:[jsx("i",{className:"fa fa-home"}),jsx(NavLink,{to:"/home",children:"Accueil"})]}),jsxs(MenuEl,{children:[jsx("i",{class:"fa-solid fa-clapperboard"}),jsx(NavLink,{to:"/channels",children:"Mes Cha\xEEnes"})]})]})]}),Template=({children:o})=>jsxs(Container$1,{children:[jsx(VerticalMenu,{}),jsxs(RightContainer,{children:[jsx(HorizontalMenu,{}),jsx(ContentWrapper,{children:o})]})]}),CardContainer=styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
