@@ -56,6 +56,8 @@ export const InputContainer = styled.div`
     }
 `
 export const LinkContainer = styled.div`
+    margin-top: 30px;
+    text-align: center;
     & a{
         color: ${props => props.theme.colors.red};
         font-family: 'Poppins';

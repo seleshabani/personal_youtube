@@ -54,7 +54,7 @@ export const Login = ()=>{
                         </p>
                     </LeftTitleContainer>
                     <FormContainer>
-                        <FormWithInput onSubmit={handleFormSubmit}>
+                        {/* <FormWithInput onSubmit={handleFormSubmit}>
                             <InputContainer>
                                 <label htmlFor="email">Email</label>
                                 <input type="email"  name="email"/>
@@ -63,16 +63,16 @@ export const Login = ()=>{
                                 <label htmlFor="email">Mot de passe</label>
                                 <input type="password"  name="email"/>
                             </InputContainer>
-                            <LinkContainer>
-                                <Link to={"/subscribe"}>Vous n'avez pas de compte?</Link>
-                            </LinkContainer>
                             <ButtonContainer>
                                 <button>Connexion</button>
                             </ButtonContainer>
-                        </FormWithInput>
+                        </FormWithInput> */}
                         <ConnectWithContainer>
                             <button id="gapi_btn"> <i className="fa-brands fa-google"></i> Login with google</button>
                         </ConnectWithContainer>
+                        <LinkContainer>
+                            <Link to={"/subscribe"}>Vous n'avez pas de compte?</Link>
+                        </LinkContainer>
                     </FormContainer>
                 </LeftContainerWrapper>
             </LeftContainer>

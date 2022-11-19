@@ -36,6 +36,7 @@ export default function App() {
             </Route>
             <Route>
               <Route path="/subscribe" element={<Subscribe/>} />
+              <Route path="/login" element={<Login/>} />
             </Route>
           </Routes>
       </>
