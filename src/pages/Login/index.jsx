@@ -5,7 +5,7 @@ import { useContext } from "react"
 import { UserLoginStatusContext } from "../../context/userLoginStatus"
 import { gapi, loadAuth2 } from 'gapi-script';
 import {useNavigate} from 'react-router-dom'
-
+import { Link } from "react-router-dom"
 
 /* import GoogleLogin from "react-google-login" */
 export const Login = ()=>{
@@ -54,7 +54,7 @@ export const Login = ()=>{
                         </p>
                     </LeftTitleContainer>
                     <FormContainer>
-                        {/* <FormWithInput onSubmit={handleFormSubmit}>
+                        <FormWithInput onSubmit={handleFormSubmit}>
                             <InputContainer>
                                 <label htmlFor="email">Email</label>
                                 <input type="email"  name="email"/>
@@ -64,12 +64,12 @@ export const Login = ()=>{
                                 <input type="password"  name="email"/>
                             </InputContainer>
                             <LinkContainer>
-                                <a href="https://youtube.com" target='_blank'>Vous n'avez pas de compte Youtube?</a>
+                                <Link to={"/subscribe"}>Vous n'avez pas de compte?</Link>
                             </LinkContainer>
                             <ButtonContainer>
                                 <button>Connexion</button>
                             </ButtonContainer>
-                        </FormWithInput> */}
+                        </FormWithInput>
                         <ConnectWithContainer>
                             <button id="gapi_btn"> <i className="fa-brands fa-google"></i> Login with google</button>
                         </ConnectWithContainer>

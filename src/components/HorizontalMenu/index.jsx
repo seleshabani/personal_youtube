@@ -20,12 +20,13 @@ export const HorizontalMenu = ()=>{
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             if(auth2.isSignedIn.get()){
-                auth2.signOut();
+               await auth2.signOut();
             }
         }
         setAuth2().then(()=>{
             switchIsLogin();
             navigateTo('/');
+            window.location.reload();
         })
     }
 

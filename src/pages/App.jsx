@@ -12,27 +12,32 @@ import { Channels } from "./Channels";
 import { Single } from "./Single";
 import { VideosForChannel } from "./VideosForChannel";
 import { SearchResult } from "./SearchResult";
+import { Subscribe } from "./Subscribe";
 
 export default function App() {
-  const {isLogin} = useContext(UserLoginStatusContext);
-  const isLogedStorage = localStorage.getItem('isLogin');
+  //const {isLogin} = useContext(UserLoginStatusContext);
+  /* const isLogedStorage = localStorage.getItem('isLogin');
 
   if ((isLogin===false) && (isLogedStorage !== 'true')) {
     return <Login/>
-  }
+  } */
 
   return (
       <>
-        <Template>
           <Routes>
-            <Route path="/home" element={<Home/>} />
-            <Route path="/favoris" element={<Favoris/>} />
-            <Route path="/channels" element={<Channels/>} />
-            <Route path="/channels/:channelId" element={<VideosForChannel/>} />
-            <Route path="/video/:id" element={<Single/>} />
-            <Route path="/search/:query" element={<SearchResult/>} />
+            <Route element={<Template/>}>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/home" element={<Home/>} />
+              <Route path="/favoris" element={<Favoris/>} />
+              <Route path="/channels" element={<Channels/>} />
+              <Route path="/channels/:channelId" element={<VideosForChannel/>} />
+              <Route path="/video/:id" element={<Single/>} />
+              <Route path="/search/:query" element={<SearchResult/>} />
+            </Route>
+            <Route>
+              <Route path="/subscribe" element={<Subscribe/>} />
+            </Route>
           </Routes>
-        </Template>
       </>
   )
 }

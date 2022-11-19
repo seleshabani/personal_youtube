@@ -20,7 +20,7 @@ export const VerticalMenu = ()=>{
                     <NavLink to='/favoris'>Favoris</NavLink>
                 </MenuEl> */}
                 <MenuEl>
-                    <i class="fa-solid fa-clapperboard"></i>
+                    <i className="fa-solid fa-clapperboard"></i>
                     <NavLink to='/channels'>Mes Chaînes</NavLink>
                 </MenuEl>
             </MenuWrapper>
