@@ -17,7 +17,7 @@ export const Login = ()=>{
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             if(auth2.isSignedIn.get()){
-                 let user = auth2.currentUser.le
+                let user = auth2.currentUser.le
                 localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
                 switchIsLogin();
                 navigateTo('/home');
@@ -31,8 +31,6 @@ export const Login = ()=>{
     })
     const attacheSignIn = (element,auth2) =>{
         auth2.attachClickHandler(element,{},(user)=>{
-            console.log(user)
-            //redirection
             localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
             switchIsLogin();
             navigateTo('/home');
