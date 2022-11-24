@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Comment } from "../../components/Comment";
 import { Spinner } from "../../components/Spinner";
-import { CommentsContainer, CommentsForm, CommentsFormContainer, CommentsFormProfil, ContainerWrapper } from "./styled";
+import { CommentsContainer, CommentsForm, CommentsFormContainer, CommentsFormProfil, CommentsList, ContainerWrapper } from "./styled";
 
 export const Single = ()=>{
     const {id} = useParams()
@@ -42,6 +43,9 @@ export const Single = ()=>{
                         </div>
                     </CommentsForm>
                 </CommentsFormContainer>
+                <CommentsList>
+                        <Comment/>
+                </CommentsList>
             </CommentsContainer>
             </>}
         </ContainerWrapper>

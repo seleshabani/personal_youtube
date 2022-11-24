@@ -26,6 +26,7 @@ export const CommentsContainer = styled.div`
 `
 export const CommentsFormContainer = styled.div`
     width:60% ;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -69,4 +70,12 @@ export const CommentsForm = styled.form`
             cursor: pointer;
         }
     }
+`
+export const CommentsList = styled.div`
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 `
