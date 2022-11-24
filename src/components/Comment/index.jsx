@@ -1,5 +1,6 @@
 import React from "react";
 import { CommentContainer, CommentContent, CommentContentActions, CommentContentText, CommentUser } from "./styled";
+import { Icon } from '@iconify/react';
 
 export const Comment = ({user,content,likes,dislikes})=>{
     return(
@@ -9,10 +10,20 @@ export const Comment = ({user,content,likes,dislikes})=>{
             </CommentUser>
             <CommentContent>
                 <CommentContentText>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, aliquam sint. Suscipit, alias!</p>
+                    <p>{content}</p>
                 </CommentContentText>
                 <CommentContentActions>
-                    
+                    <div className="icones">
+                        <div className="icone">
+                            <Icon icon="mdi:heart-outline" />
+                        </div>
+                        <div className="icone">
+                            <Icon icon="mdi:heart-broken-outline" />
+                        </div>
+                    </div>
+                    <div className="reponse_tog">
+                        <p>Répondre</p>
+                    </div>
                 </CommentContentActions>
             </CommentContent>
         </CommentContainer>

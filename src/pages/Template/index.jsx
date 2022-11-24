@@ -14,14 +14,14 @@ export const Template = ({children})=>{
         return <Login/>
     }
     return(
-        <Container>
-            <VerticalMenu/>
-            <RightContainer>
-                <HorizontalMenu/>
-                <ContentWrapper>
-                   <Outlet/>
-                </ContentWrapper>
-            </RightContainer>
-        </Container>
+            <Container>
+                <VerticalMenu/>
+                <RightContainer>
+                    <HorizontalMenu/>
+                    <ContentWrapper>
+                    <Outlet/>
+                    </ContentWrapper>
+                </RightContainer>
+            </Container>
     )
 }
