@@ -6,41 +6,56 @@ import { UserLoginStatusContext } from "../../context/userLoginStatus"
 import { gapi, loadAuth2 } from 'gapi-script';
 import {useNavigate} from 'react-router-dom'
 import { Link } from "react-router-dom"
+import { useState } from "react"
 
 /* import GoogleLogin from "react-google-login" */
 export const Login = ()=>{
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
     const {switchIsLogin} = useContext(UserLoginStatusContext);
     const navigateTo = useNavigate();
-
+    const [loginError, setLoginError] = useState(false)
     useEffect(()=>{
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
-            if(auth2.isSignedIn.get()){
-                let user = auth2.currentUser.le
-                localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
-                switchIsLogin();
-                navigateTo('/home');
-               // console.log("déjà connecté")
-               attacheSignIn(document.getElementById('gapi_btn'),auth2)
-            }else{
+          //  if(auth2.isSignedIn.get()){
+          //      let user = auth2.currentUser.le
+          //      localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
+          //      switchIsLogin();
+          //      navigateTo('/home');
+          //     attacheSignIn(document.getElementById('gapi_btn'),auth2)
+          //  }else{
                 attacheSignIn(document.getElementById('gapi_btn'),auth2) 
-            }
+          //  }
         }
         setAuth2();
     })
     const attacheSignIn = (element,auth2) =>{
-        auth2.attachClickHandler(element,{},(user)=>{
-            localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
+        auth2.attachClickHandler(element,{},async (user)=>{
+            let tokenresult = await loginRequest(user.wt.cu,user.wt.NT);
+            console.log(tokenresult);
+            if (!tokenresult) return setLoginError(true);
+            localStorage.setItem("user",JSON.stringify({
+                "nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),
+                "googleId":user.xc.access_token,"jwt":tokenresult
+            }))
             switchIsLogin();
             navigateTo('/home');
         },(error)=>console.log(error))
     }
 
-    const handleFormSubmit = (e)=>{
-        e.preventDefault();
-        //switchIsLogin();
-    }
+    const loginRequest = async (email,googleId)=>{
+        const result = await fetch('http://localhost:3500/auth/login',{
+            method:'POST',
+            body:JSON.stringify({
+                "email":email,
+                "googleId":googleId
+            }),
+            headers:{
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+        return result.json();
+    }   
     return(
         <Container>
             <LeftContainer>
