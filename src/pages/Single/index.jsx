@@ -19,18 +19,44 @@ export const Single = ()=>{
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
         .then(response=>response.json())
-        .then(data=>{
-           setVideo(data.items);
-           setIsLoading(false)
+        .then(async data=> {
+          setVideo(data.items);
+          setIsLoading(false)
+          const comments = await getComments()
+          addComment(comments)
         })
         .catch(error=>console.log(error))
     },[])
+    
+    const getComments = async ()=>{
+        const comments = await fetch(`http://localhost:3500/user/comment/${id}`,{
+            headers:{
+            'Authorization':user.jwt,
+            'Content-type': 'application/json; charset=UTF-8',
+            'Accept':'*/*'
+            }
+        });
+        return comments.json()
+    }
+   
 
-    const handleForm = (e)=>{
+
+
+    const handleForm = async (e)=>{
         e.preventDefault();
         let inputValue = inputRef.current.value;
-        inputRef.current.value=''
-        addComment(comments=>[...comments,inputValue])
+        let comments = await fetch(`http://localhost:3500/user/comment/`,{
+            method:'POST',
+            headers:{
+                'Authorization':user.jwt,
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+            body:JSON.stringify({
+                contenue:inputValue,
+                videoId:id
+            })
+        })
+        addComment(comments=>comments.json())
        // console.log(comments);
     }
     return(
@@ -54,7 +80,7 @@ export const Single = ()=>{
                 </CommentsFormContainer>
                 <CommentsList>
                         {
-                            comments ? comments.map(comment=><Comment content={comment}/>):'o'
+                            comments ? comments.map((comment,index)=><Comment key={index} content={comment.content}/>):'o'
                         }
                 </CommentsList>
             </CommentsContainer>
