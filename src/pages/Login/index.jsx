@@ -36,7 +36,7 @@ export const Login = ()=>{
             if (!tokenresult) return setLoginError(true);
             localStorage.setItem("user",JSON.stringify({
                 "nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),
-                "googleId":user.xc.access_token,"jwt":tokenresult
+                "googleId":user.xc.access_token,"jwt":tokenresult,"email":user.wt.cu
             }))
             switchIsLogin();
             navigateTo('/home');

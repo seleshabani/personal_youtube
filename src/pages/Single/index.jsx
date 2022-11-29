@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Comment } from "../../components/Comment";
 import { Spinner } from "../../components/Spinner";
-import { CommentContext } from "../../context/commentContex";
 import { CommentsContainer, CommentsForm, CommentsFormContainer, CommentsFormProfil, CommentsList, ContainerWrapper } from "./styled";
+import socketClient  from "socket.io-client";
 
 export const Single = ()=>{
     const [comments, addComment] = useState([]);
@@ -16,48 +16,34 @@ export const Single = ()=>{
     const [isLoading, setIsLoading] = useState(true)
     const inputRef = useRef(null)
     const user = JSON.parse(localStorage.getItem('user'));
+    const socket = socketClient('http://localhost:3500');
+
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`)
         .then(response=>response.json())
         .then(async data=> {
           setVideo(data.items);
           setIsLoading(false)
-          const comments = await getComments()
-          addComment(comments)
+            socket.emit('comment:read',id)
         })
         .catch(error=>console.log(error))
     },[])
-    
-    const getComments = async ()=>{
-        const comments = await fetch(`http://localhost:3500/user/comment/${id}`,{
-            headers:{
-            'Authorization':user.jwt,
-            'Content-type': 'application/json; charset=UTF-8',
-            'Accept':'*/*'
-            }
-        });
-        return comments.json()
-    }
-   
 
-
+    socket.on('comment:get',(data)=>{
+        addComment(JSON.parse(data))
+    })
 
     const handleForm = async (e)=>{
         e.preventDefault();
         let inputValue = inputRef.current.value;
-        let comments = await fetch(`http://localhost:3500/user/comment/`,{
-            method:'POST',
-            headers:{
-                'Authorization':user.jwt,
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-            body:JSON.stringify({
-                contenue:inputValue,
-                videoId:id
-            })
-        })
-        addComment(comments=>comments.json())
-       // console.log(comments);
+        const dataToSend = {
+            contenue:inputValue,
+            token:user.jwt,
+            videoId:id,
+            userMail:user.email
+        }
+        socket.emit('comment:create',JSON.stringify(dataToSend))
+        inputRef.current.value = ""
     }
     return(
        <ContainerWrapper isLoading={isLoading}>
@@ -80,7 +66,7 @@ export const Single = ()=>{
                 </CommentsFormContainer>
                 <CommentsList>
                         {
-                            comments ? comments.map((comment,index)=><Comment key={index} content={comment.content}/>):'o'
+                            comments ? comments.map((comment,index)=><Comment key={index} content={comment.content}/>):<h1>Aucun Commentaire</h1>
                         }
                 </CommentsList>
             </CommentsContainer>
