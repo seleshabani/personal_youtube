@@ -24,6 +24,19 @@ export const Theme = createGlobalStyle`
         border: none;
         border: solid 1px ${props=>props.theme.colors.grey};
     }
+    input{
+        border-radius: 5px;
+        height: 25px;
+        padding: 5px;
+    }
+    button{
+        background-color: #EE4343;
+        color: white;
+        padding: 5px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
     label{
         font-family: 'Poppins';
     }

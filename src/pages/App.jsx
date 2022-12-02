@@ -9,6 +9,7 @@ import { Single } from "./Single";
 import { VideosForChannel } from "./VideosForChannel";
 import { SearchResult } from "./SearchResult";
 import { Subscribe } from "./Subscribe";
+import {Profil} from "./Profil";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
               <Route path="/channels/:channelId" element={<VideosForChannel/>} />
               <Route path="/video/:id" element={<Single/>} />
               <Route path="/search/:query" element={<SearchResult/>} />
+              <Route path="/profil" element={<Profil/>} />
             </Route>
             <Route>
               <Route path="/subscribe" element={<Subscribe/>} />

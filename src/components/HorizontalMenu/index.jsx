@@ -55,7 +55,7 @@ export const HorizontalMenu = ()=>{
                             <span onClick={logOut}>déconnexion</span>
                         </div>
                         <div className="profil_img">
-                        {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
+                        {user?<Link to={'/profil'}><img src={user.profil_picture} alt="profil utilisateur" /></Link>:<i className="fa fa-user"></i>}
                         </div>
                     </ProfileBtnContainer>
                     <ThemeBtnContainer onClick={themeSwitcher}>
