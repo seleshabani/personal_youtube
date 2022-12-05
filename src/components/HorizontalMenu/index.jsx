@@ -6,14 +6,15 @@ import {Link, NavLink, useNavigate} from 'react-router-dom'
 import {  BtnsActionContainer, MenuBar, MenuContainer, MobileMenu, MobileMenuItem, MobileMenuLogOut, MobileMenuThemeTrigger, MobileMenuTrigger, MobileMenuWrapper, ProfileBtnContainer, ThemeBtnContainer } from "./styled";
 import { gapi,loadAuth2 } from "gapi-script";
 import { Search } from "../Search";
+import { UpdateProfilContext } from "../../context/updateUserProfil";
 
 export const HorizontalMenu = ()=>{
     const {switchIsLogin} = useContext(UserLoginStatusContext);
     const {theme,themeSwitcher} = useContext(CustomThemeContext);
     const [mobileIsVisible,setmobileIsVisible] = useState(false);
-
+    const {user} = useContext(UpdateProfilContext);
     const navigateTo = useNavigate()
-    const user = JSON.parse(localStorage.getItem('user'));
+    const stored_user = JSON.parse(localStorage.getItem('user'));
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
 
     const logOut = ()=>{
@@ -55,7 +56,7 @@ export const HorizontalMenu = ()=>{
                             <span onClick={logOut}>déconnexion</span>
                         </div>
                         <div className="profil_img">
-                        {user?<Link to={'/profil'}><img src={user.profil_picture} alt="profil utilisateur" /></Link>:<i className="fa fa-user"></i>}
+                        {stored_user?<Link to={'/profil'}><img src={stored_user.picture} alt="profil utilisateur" /></Link>:<i className="fa fa-user"></i>}
                         </div>
                     </ProfileBtnContainer>
                     <ThemeBtnContainer onClick={themeSwitcher}>

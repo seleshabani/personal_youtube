@@ -7,37 +7,35 @@ import { gapi, loadAuth2 } from 'gapi-script';
 import {useNavigate} from 'react-router-dom'
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { UpdateProfilContext } from "../../context/updateUserProfil"
 
 /* import GoogleLogin from "react-google-login" */
 export const Login = ()=>{
     const clientId = "86725510865-s9kseu1lfqjg1jgrh4pb6utarkv7qnor.apps.googleusercontent.com"
     const {switchIsLogin} = useContext(UserLoginStatusContext);
+    const {user,SetStoredUser} = useContext(UpdateProfilContext);
+
     const navigateTo = useNavigate();
-    const [loginError, setLoginError] = useState(false)
+    const [loginError, setLoginError] = useState(false);
+
     useEffect(()=>{
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
-          //  if(auth2.isSignedIn.get()){
-          //      let user = auth2.currentUser.le
-          //      localStorage.setItem("user",JSON.stringify({"nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),"googleId":user.xc.access_token}))
-          //      switchIsLogin();
-          //      navigateTo('/home');
-          //     attacheSignIn(document.getElementById('gapi_btn'),auth2)
-          //  }else{
-                attacheSignIn(document.getElementById('gapi_btn'),auth2) 
-          //  }
+            attacheSignIn(document.getElementById('gapi_btn'),auth2) 
         }
         setAuth2();
     })
     const attacheSignIn = (element,auth2) =>{
         auth2.attachClickHandler(element,{},async (user)=>{
             let tokenresult = await loginRequest(user.wt.cu,user.wt.NT);
-            console.log(tokenresult);
             if (!tokenresult) return setLoginError(true);
-            localStorage.setItem("user",JSON.stringify({
+            let retrieved_user = await getProfil(tokenresult);
+            SetStoredUser(retrieved_user,tokenresult,user.xc.access_token);
+            console.log(retrieved_user,user.xc.access_token);
+           /*  localStorage.setItem("user",JSON.stringify({
                 "nom":user.wt.rV,"profil_picture":user.wt.getImageUrl(),
                 "googleId":user.xc.access_token,"jwt":tokenresult,"email":user.wt.cu
-            }))
+            })) */
             switchIsLogin();
             navigateTo('/home');
         },(error)=>console.log(error))
@@ -55,7 +53,18 @@ export const Login = ()=>{
             }
         })
         return result.json();
-    }   
+    } 
+    
+    const getProfil = async (jwt)=>{
+        const result = await fetch('http://localhost:3500/user/profil',{
+            method:'Get',
+            headers:{
+                'Authorization':jwt,
+                'Content-type': 'application/json'
+            }
+        });
+        return result.json();
+    }
     return(
         <Container>
             <LeftContainer>

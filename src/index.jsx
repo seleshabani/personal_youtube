@@ -6,16 +6,20 @@ import { CustomThemeProvider } from './context/customTheme'
 import { UserLoginStatusProvider } from './context/userLoginStatus'
 import { Styles } from './themes'
 import { CommmentContextProvider } from './context/commentContex';
+import { UpdateprofileProvider } from './context/updateUserProfil';
+import ErrorBoundary from './hooks/ErrorBundary.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
 		<CustomThemeProvider>
 			<Styles>
-				<UserLoginStatusProvider>
-					<CommmentContextProvider>
-						<App />
-					</CommmentContextProvider>
-				</UserLoginStatusProvider>
+				<UpdateprofileProvider>
+					<UserLoginStatusProvider>
+						<CommmentContextProvider>
+								<App />
+						</CommmentContextProvider>
+					</UserLoginStatusProvider>
+				</UpdateprofileProvider>
 			</Styles>
 		</CustomThemeProvider>
 	</BrowserRouter>
