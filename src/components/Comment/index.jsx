@@ -13,7 +13,7 @@ export const Comment = ({user,content,likes,dislikes})=>{
                 {user?<img src={user.picture}/>:<i className="fa fa-user"></i>}
             </CommentUser>
             <CommentContent>
-                <CommentContentText>
+                <CommentContentText> 
                     <p>{content}</p>
                 </CommentContentText>
                 <CommentContentActions>
