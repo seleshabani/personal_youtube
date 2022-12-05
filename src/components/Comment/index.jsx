@@ -1,12 +1,16 @@
 import React from "react";
 import { CommentContainer, CommentContent, CommentContentActions, CommentContentText, CommentUser } from "./styled";
 import { Icon } from '@iconify/react';
+import { useEffect } from "react";
 
 export const Comment = ({user,content,likes,dislikes})=>{
+    useEffect(()=>{
+        //console.log(user);
+    },[])
     return(
         <CommentContainer>
             <CommentUser>
-                {user?<img src={user}/>:<i className="fa fa-user"></i>}
+                {user?<img src={user.picture}/>:<i className="fa fa-user"></i>}
             </CommentUser>
             <CommentContent>
                 <CommentContentText>

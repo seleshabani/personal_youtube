@@ -7,6 +7,7 @@ export const CommentContainer = styled.div`
     gap: 20px;
     align-items: center;
     align-content: center;
+    margin-bottom: 20px;
     
 `
 export const CommentUser = styled.div`

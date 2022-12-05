@@ -14,7 +14,7 @@ export const Search = ()=>{
     const inputSearchRef = useRef(null)
     const navigate = useNavigate()
     const [results,setResults] = useState([]);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const token = JSON.parse(localStorage.getItem('token'));
     const {resultVisible,setResultVisible} = useOutside(inputSearchRef);
 
     const searchHandler = ()=>{
@@ -22,7 +22,7 @@ export const Search = ()=>{
         setResultVisible(true);
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{
             method:'GET',
-            headers:new Headers({'Authorization':'Bearer '+user.googleId})
+            headers:new Headers({'Authorization':'Bearer '+token.googleId})
         })
         .then(response=>response.json())
         .then(data=>setResults(data.items))

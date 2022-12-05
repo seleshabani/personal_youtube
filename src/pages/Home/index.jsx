@@ -12,10 +12,10 @@ export const Home = ()=>{
     const [isLoading, setIsLoading] = useState(true)
     const [videos, setVideos] = useState([]);
     const [error, setError] = useState(false)
-    const user = JSON.parse(localStorage.getItem('user'))
+    const token = JSON.parse(localStorage.getItem('token'))
 
     useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&access_token='+user.googleId)
+        fetch('https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&myRating=like&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&access_token='+token.googleId)
         .then(response=>response.json())
         .then(data=>{setVideos(data.items);setIsLoading(false)})
         .catch(()=>setError(true))

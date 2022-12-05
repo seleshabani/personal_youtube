@@ -5,14 +5,14 @@ import { CirclesWithBar } from 'react-loader-spinner'
 import { Spinner } from "../../components/Spinner";
 
 export const Channels = ()=>{
-    const user = JSON.parse(localStorage.getItem('user'));
+    const token = JSON.parse(localStorage.getItem('token'));
     const [channels,setChannels] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const [error,setError] = useState(false);
 
     useEffect(()=>{
         fetch(`https://www.googleapis.com/youtube/v3/subscriptions?part=id,snippet,contentDetails&maxResults=15&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA&mine=true`,
-        {method:'GET',headers:new Headers({'Authorization':`Bearer ${user.googleId}`})})
+        {method:'GET',headers:new Headers({'Authorization':`Bearer ${token.googleId}`})})
         .then((response)=>response.json())
         .then(data=>{{setChannels(data.items);setIsLoading(false);}})
         .catch(()=>setError(true))

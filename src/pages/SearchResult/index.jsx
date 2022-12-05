@@ -6,14 +6,14 @@ import { VideoCard } from "../../components/VideoCard";
 import { SearchResultContainer, SearchResultContainerWrapper } from "./styled";
 export const SearchResult = ()=>{
     const {query} = useParams();
-    const user = JSON.parse(localStorage.getItem('user'))
+    const token = JSON.parse(localStorage.getItem('token'))
     const [results,setResults] = useState([])
     const [isLoading,setIsLoading] = useState(true);
     
     useEffect(()=>{
         fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=AIzaSyAtyhesRrybOy-JDiv-rBfWxHpy90utvrA`,{
             method:'GET',
-            headers:new Headers({'Authorization':'Bearer '+user.googleId})
+            headers:new Headers({'Authorization':'Bearer '+token.googleId})
         })
         .then(response=>response.json())
         .then(data=>{

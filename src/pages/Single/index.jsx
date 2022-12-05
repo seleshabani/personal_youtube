@@ -30,6 +30,7 @@ export const Single = ()=>{
     },[])
 
     socket.on('comment:get',(data)=>{
+        //console.log(data);
         addComment(JSON.parse(data))
     })
 
@@ -53,7 +54,7 @@ export const Single = ()=>{
             <CommentsContainer>
                 <CommentsFormContainer>
                     <CommentsFormProfil>
-                    {user?<img src={user.profil_picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
+                    {user?<img src={user.picture} alt="profil utilisateur" />:<i className="fa fa-user"></i>}
                     </CommentsFormProfil>
                     <CommentsForm>
                         <div className="input_container">
@@ -66,7 +67,7 @@ export const Single = ()=>{
                 </CommentsFormContainer>
                 <CommentsList>
                         {
-                            comments ? comments.map((comment,index)=><Comment key={index} content={comment.content}/>):<h1>Aucun Commentaire</h1>
+                            comments ? comments.map((comment,index)=><Comment key={index} content={comment.content} user={comment.author}/>):<h1>Aucun Commentaire</h1>
                         }
                 </CommentsList>
             </CommentsContainer>
