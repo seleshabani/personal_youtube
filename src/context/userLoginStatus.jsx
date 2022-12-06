@@ -12,6 +12,8 @@ export const UserLoginStatusProvider = ({children})=>{
             localStorage.setItem('isLogin','true');
             setIsLogin(true);
         }else{
+            localStorage.removeItem('user');
+            localStorage.removeItem('token')
             localStorage.clear();
             setIsLogin(false);
         }

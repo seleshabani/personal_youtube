@@ -11,8 +11,9 @@ export const CommentContainer = styled.div`
     
 `
 export const CommentUser = styled.div`
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;

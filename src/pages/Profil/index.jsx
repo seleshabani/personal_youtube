@@ -8,6 +8,7 @@ import { BlocContainer, ProfilContainer, ProfilImage, ProfilImageContainer } fro
 export const Profil = ()=>{
 
     const userNameInpRef = useRef(null);
+    const h1ref = useRef(null);
     const {user,SetStoredUser} = useContext(UpdateProfilContext);
     const storedUser = JSON.parse(localStorage.getItem('user'));
     const storedToken = JSON.parse(localStorage.getItem('token'));
@@ -44,6 +45,7 @@ export const Profil = ()=>{
             user.name = data;
             localStorage.setItem('user',JSON.stringify(storedUser));
             userNameInpRef.current.value=''
+            h1ref.current.innerText = data;
         })
     }
     const handleChangePicture = async (e)=>{
@@ -85,7 +87,7 @@ export const Profil = ()=>{
                     {!storedUser.picture?<i className="fa fa-user"></i>:<img src={storedUser.picture} alt='user profil'/>}
                 </ProfilImage>
                 <div className="form_container">
-                    <h1>{storedUser.name}</h1>
+                    <h1 ref={h1ref}>{storedUser.name}</h1>
                     <form action="">
                         <div>
                             <input type="file" name="profil_picture" id="profil_picture" onChange={handleChangePicture}/>

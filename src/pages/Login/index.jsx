@@ -19,6 +19,7 @@ export const Login = ()=>{
     const [loginError, setLoginError] = useState(false);
 
     useEffect(()=>{
+        localStorage.clear();
         const setAuth2 = async ()=>{
             const auth2 = await loadAuth2(gapi,clientId,'https://www.googleapis.com/auth/youtube');
             attacheSignIn(document.getElementById('gapi_btn'),auth2) 
